@@ -19,9 +19,9 @@ Feature: As a user, I want to view products
     Then the products are listed in descending order by price
 
   Scenario: Description exists for all products
-    When I view the products page
+    When I view the inventory page
     Then all products have a non-empty description
 
   Scenario: Correct image exists for all products
-    When I view the products page
+    When I view the inventory page
     Then all products have the correct image displayed

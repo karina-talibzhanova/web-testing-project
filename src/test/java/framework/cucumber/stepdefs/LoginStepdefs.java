@@ -53,8 +53,8 @@ public class LoginStepdefs {
         loginPage.clickLogin();
     }
 
-    @Then("I am taken to the products page")
-    public void iAmTakenToTheProductsPage() {
+    @Then("I am taken to the inventory page")
+    public void iAmTakenToTheInventoryPage() {
         Assertions.assertEquals("https://www.saucedemo.com/inventory.html", webDriver.getCurrentUrl());
     }
 }
