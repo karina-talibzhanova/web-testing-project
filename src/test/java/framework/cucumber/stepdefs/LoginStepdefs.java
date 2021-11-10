@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class MyStepdefs {
+public class LoginStepdefs {
     private WebDriver webDriver;
     private LoginPage loginPage;
 
@@ -30,6 +30,13 @@ public class MyStepdefs {
 
     @Given("I am on the login page")
     public void iAmOnTheLoginPage() {
+    }
+
+    @Given("I am logged in")
+    public void iAmLoggedIn() {
+        loginPage.inputName("standard_user");
+        loginPage.inputPass("secret_sauce");
+        loginPage.clickLogin();
     }
 
     @When("I input a valid username")
