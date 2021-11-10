@@ -46,8 +46,15 @@ public class MyStepdefs {
         loginPage.clickLogin();
     }
 
-    @Then("I am taken to the inventory page")
+    @Then("I am taken to the products page")
     public void iAmTakenToTheInventoryPage() {
         Assertions.assertEquals("https://www.saucedemo.com/inventory.html", webDriver.getCurrentUrl());
+    }
+
+    @Given("I am logged in")
+    public void iAmLoggedIn() {
+        loginPage.inputName("standard_user");
+        loginPage.inputPass("secret_sauce");
+        loginPage.clickLogin();
     }
 }
