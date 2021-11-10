@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class MyStepdefs {
+public class LoginStepdefs {
     private WebDriver webDriver;
     private LoginPage loginPage;
 
@@ -46,7 +46,7 @@ public class MyStepdefs {
         loginPage.clickLogin();
     }
 
-    @Then("I am taken to the products page")
+    @Then("I am taken to the inventory page")
     public void iAmTakenToTheInventoryPage() {
         Assertions.assertEquals("https://www.saucedemo.com/inventory.html", webDriver.getCurrentUrl());
     }
