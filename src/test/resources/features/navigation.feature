@@ -15,15 +15,17 @@ Feature:
     When I click the dropdown menu icon
     Then I will see links to All Items, About, Logout and Reset App State
 
-  Scenario: As a user, I want to click on the social media links and navigate to the correct social media page so that I can interact with the company further
+  Scenario: As a user, I want to click on the Twitter link and navigate to the Twitter social media page so that I can interact with the company further
     When I am at the bottom of the page
     And I click on the Twitter icon
     Then the companies Twitter page should load
 
+  Scenario: As a user, I want to click on the Facebook link and navigate to the Facebook social media page so that I can interact with the company further
     When I am at the bottom of the page
     And I click on the Facebook icon
     Then the companies Facebook page should load
 
+  Scenario: As a user, I want to click on the Linkedin link and navigate to the Linkedin social media page so that I can interact with the company further
     When I am at the bottom of the page
     And I click on the Linkedin icon
     Then the companies Linkedin page should load
