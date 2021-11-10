@@ -7,4 +7,4 @@ Feature: login validation
     When I input a valid username
     And I input a valid password
     And I click login
-    Then I am taken to the inventory page
+    Then I am taken to the products page
