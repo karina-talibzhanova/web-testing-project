@@ -39,6 +39,7 @@ public class LoginStepdefs {
         loginPage.clickLogin();
     }
 
+
     @When("I input a valid username")
     public void iInputAValidUsername() {
         loginPage.inputName("standard_user");
@@ -57,4 +58,5 @@ public class LoginStepdefs {
     public void iAmTakenToTheInventoryPage() {
         Assertions.assertEquals("https://www.saucedemo.com/inventory.html", webDriver.getCurrentUrl());
     }
+
 }
