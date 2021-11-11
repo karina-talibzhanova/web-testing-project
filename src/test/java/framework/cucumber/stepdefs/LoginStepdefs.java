@@ -95,22 +95,7 @@ public class LoginStepdefs{
         Assertions.assertEquals("Epic sadface: Password is required", loginPage.getErrorMessage());
     }
 
-
     @Given("I am logged in")
     public void iAmLoggedIn() {
-        loginPage.inputUsername("standard_user");
-        loginPage.inputPassword("secret_sauce");
-        loginPage.clickLogin();
     }
-//
-//    @When("I click logout")
-//    public void iClickLogout() {
-//        productsPage.openSidebar();
-//        productsPage.clickLogout();
-//    }
-//
-//    @Then("I will be directed to the logout page")
-//    public void iWillBeDirectedToTheLogoutPage() {
-//        Assertions.assertEquals("https://www.saucedemo.com/",webDriver.getCurrentUrl());
-//    }
 }

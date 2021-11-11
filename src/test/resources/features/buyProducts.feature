@@ -60,11 +60,19 @@ Feature: Ability to buy products
     When I click Continue Shopping
     Then I am taken to the inventory page
 
-  Scenario: As a user, when I click the item title, I am taken to the specific product page
-    When I click the title of an item
-    Then I am taken to the product page
+  Scenario Outline: As a user, when I click the item title, I am taken to the specific product page
+    When I click the "<title>" of an item
+    Then I am taken to the product page with "<title>"
+    Examples:
+      |  title |
+    |      Sauce Labs Backpack  |
+    |        Sauce Labs Bike Light          |
+    |      Sauce Labs Bolt T-Shirt              |
+    |      Sauce Labs Fleece Jacket          |
+    |      Sauce Labs Onesie               |
+    |     Test.allTheThings() T-Shirt (Red)      |
 
-  Scenario: As a user, when I click the item imagine, I am taken to the specific product page
+  Scenario: As a user, when I click the item image, I am taken to the specific product page
     When I click the image of an item
     Then I am taken to the product page
 

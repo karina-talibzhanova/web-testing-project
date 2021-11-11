@@ -2,6 +2,7 @@ package framework.cucumber.stepdefs;
 
 import framework.pom.interfaces.Inventory;
 import framework.pom.interfaces.Login;
+import framework.pom.interfaces.Product;
 import framework.pom.pages.InventoryPage;
 import framework.pom.pages.LoginPage;
 import framework.pom.util.Util;
@@ -10,6 +11,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,6 +20,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class BuyProductsStepDefs {
     private WebDriver webDriver;
     private Inventory inventoryPage;
+    private Product productPage;
 
     @Before
     public void setup(){
@@ -112,12 +115,14 @@ public class BuyProductsStepDefs {
     public void iClickContinueShopping() {
     }
 
-    @When("I click the title of an item")
-    public void iClickTheTitleOfAnItem() {
+    @When("I click the {string} of an item")
+    public void iClickTheTitleOfAnItem(String title) {
+        productPage = inventoryPage.goToProductPageViaTitle(title);
     }
 
-    @Then("I am taken to the product page")
-    public void iAmTakenToTheProductPage() {
+    @Then("I am taken to the product page with {string}")
+    public void iAmTakenToTheProductPage(String title) {
+        Assertions.assertEquals(title, productPage.getProductTitle());
     }
 
     @When("I click the image of an item")
