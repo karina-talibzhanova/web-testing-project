@@ -100,4 +100,22 @@ public class LoginStepdefs{
     }
 
 
+    @Given("I am logged in")
+    public void iAmLoggedIn() {
+        loginPage.inputName("standard_user");
+        loginPage.inputPass("secret_sauce");
+        loginPage.setLoginDetails("standard_user", "secret_sauce");
+        loginPage.clickLogin();
+    }
+//
+//    @When("I click logout")
+//    public void iClickLogout() {
+//        productsPage.openSidebar();
+//        productsPage.clickLogout();
+//    }
+//
+//    @Then("I will be directed to the logout page")
+//    public void iWillBeDirectedToTheLogoutPage() {
+//        Assertions.assertEquals("https://www.saucedemo.com/",webDriver.getCurrentUrl());
+//    }
 }

@@ -21,12 +21,13 @@ public class BuyProductsStepDefs {
 
     @Before
     public void setup(){
-        Util.setDriverLocation(System.getenv("ChromeDriverPath"));
+      /*  Util.setDriverLocation(System.getenv("ChromeDriverPath"));
         webDriver= new ChromeDriver();
         Login loginPage= new LoginPage(webDriver); //starts from login page (makes sense because we always need to login)
         loginPage.inputUsername("standard_user");
         loginPage.inputPassword("secret_sauce");
         inventoryPage = loginPage.clickLogin();
+        */
     }
 
     @After
