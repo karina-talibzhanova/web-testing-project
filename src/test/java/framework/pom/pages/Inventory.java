@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public interface InventoryInterface {
+public interface Inventory {
     void changeFilter(Enum OPTIONS);
     boolean isFilterApplied();
     void addProduct(WebElement product);
