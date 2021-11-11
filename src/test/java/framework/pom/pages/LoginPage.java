@@ -49,20 +49,19 @@ public class LoginPage implements Login {
     public void inputPass(String pass){
         webDriver.findElement(By.name("password")).sendKeys(pass);
     }
-
-    /*public void clickLogin(){
-        webDriver.findElement(By.name("login-button")).click();
-    }*/
-
-   public boolean checkMissingUsernameErrorMessage(){
-        return webDriver.findElement(By.tagName("h3")).getText().contains("Username is required");
-    }
-    public boolean checkMissingPasswordErrorMessage(){
-        return webDriver.findElement(By.tagName("h3")).getText().contains("Password is required");
-    }
-
-    public boolean checkErrorMessageExists(){
-        return webDriver.findElement(By.className("error-button")).isDisplayed();
-    }
-
+//
+//    public void clickLogin(){
+//        webDriver.findElement(By.name("login-button")).click();
+//    }
+//
+//    public boolean checkMissingUsernameErrorMessage(){
+//        return webDriver.findElement(By.tagName("h3")).getText().contains("Username is required");
+//    }
+//    public boolean checkMissingPasswordErrorMessage(){
+//        return webDriver.findElement(By.tagName("h3")).getText().contains("Password is required");
+//    }
+//
+//    public boolean checkErrorMessageExists(){
+//        return webDriver.findElement(By.className("error-button")).isDisplayed();
+//    }
 }
