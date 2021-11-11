@@ -1,15 +1,20 @@
 package framework.cucumber.stepdefs;
 
+import framework.pom.interfaces.Cart;
 import framework.pom.interfaces.Inventory;
 import framework.pom.interfaces.Login;
+import framework.pom.interfaces.Product;
 import framework.pom.pages.InventoryPage;
 import framework.pom.pages.LoginPage;
+import framework.pom.pages.ProductPage;
 import framework.pom.util.Util;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,21 +23,22 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class BuyProductsStepDefs {
     private WebDriver webDriver;
     private Inventory inventoryPage;
+    private Product productPage;
+
 
     @Before
     public void setup(){
-        Util.setDriverLocation(System.getenv("ChromeDriverPath"));
+      /*  Util.setDriverLocation(System.getenv("ChromeDriverPath"));
         webDriver= new ChromeDriver();
         Login loginPage= new LoginPage(webDriver); //starts from login page (makes sense because we always need to login)
         loginPage.inputUsername("standard_user");
         loginPage.inputPassword("secret_sauce");
         inventoryPage = loginPage.clickLogin();
+        */
     }
 
-    @After
-    public void tearDown(){
-        webDriver.quit(); //Comment out to see process
-    }
+
+
 
 
     @When("I click Add to Cart to for an item on the inventory page")
@@ -49,12 +55,21 @@ public class BuyProductsStepDefs {
     public void theItemIsAddedToCart() {
     }
 
+    @And("I have an item in cart")
+    public void iHaveAnItemInCart() {
+//        inventoryPage.addProduct(webDriver.findElement(By.className("inventory_item")));
+    }
+
+    //ERROR BEGINS
     @And("I am on the cart page")
     public void iAmOnTheCartPage() {
+//        cartPage = inventoryPage.goToCartPage();
     }
 
     @When("I click Remove")
     public void iClickRemove() {
+//        WebElement aProduct = webDriver.findElement(By.className("cart_item"));
+//        cartPage.removeProducts(aProduct);
     }
 
     @Then("the item is removed from the cart")
@@ -113,16 +128,20 @@ public class BuyProductsStepDefs {
     public void iClickContinueShopping() {
     }
 
-    @When("I click the title of an item")
-    public void iClickTheTitleOfAnItem() {
+    @When("I click the {string} of an item")
+    public void iClickTheTitleOfAnItem(String title) {
+        productPage = inventoryPage.goToProductPageViaTitle(title);
     }
 
-    @Then("I am taken to the product page")
-    public void iAmTakenToTheProductPage() {
+    @Then("I am taken to the product page with {string}")
+    public void iAmTakenToTheProductPage(String title) {
+        Assertions.assertEquals(title, productPage.getProductTitle());
     }
 
     @When("I click the image of an item")
     public void iClickTheImageOfAnItem() {
+        webDriver.findElement(By.className("inventory_item_img")).click();
+        productPage = new ProductPage(webDriver);
     }
 
     @When("I click the cart badge")
@@ -138,5 +157,9 @@ public class BuyProductsStepDefs {
         WebElement aProduct = webDriver.findElement(By.className("inventory_item"));
         inventoryPage.addProduct(aProduct);
         inventoryPage.removeProduct(aProduct);
+    }
+
+    @Given("I am logged in")
+    public void iAmLoggedIn() {
     }
 }

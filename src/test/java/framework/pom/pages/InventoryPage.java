@@ -1,5 +1,6 @@
 package framework.pom.pages;
 
+import framework.pom.interfaces.Cart;
 import framework.pom.interfaces.Inventory;
 import framework.pom.interfaces.Product;
 import org.openqa.selenium.By;
@@ -9,7 +10,6 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 public class InventoryPage extends CommonPage implements Inventory {
-    private WebDriver webDriver;
     public InventoryPage(WebDriver webDriver) {
         super(webDriver);
     }
@@ -45,6 +45,16 @@ public class InventoryPage extends CommonPage implements Inventory {
 
     @Override
     public Product goToProductPageViaTitle(String productName) {
+        List<WebElement> productTitles = webDriver.findElements(By.className("inventory_item_label"));
+        WebElement productTitleLink;
+        for (WebElement productTitle : productTitles) {
+            if (productTitle.findElement(By.className("inventory_item_name")).getText().equals(productName)) {
+                System.out.println("found");
+                productTitleLink = productTitle;
+                productTitleLink.findElement(By.tagName("a")).click();
+                return new ProductPage(webDriver);
+            }
+        }
         return null;
     }
 
@@ -92,4 +102,11 @@ public class InventoryPage extends CommonPage implements Inventory {
     public WebElement getProductImage(WebElement product) {
         return null;
     }
+
+//    @Override
+//    public Cart goToCartPage() {
+//        webDriver.findElement(By.className("shopping_cart_link"));
+//        return new CartPage(webDriver);
+//        return null;
+//    }
 }
