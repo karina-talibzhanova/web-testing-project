@@ -1,9 +1,6 @@
 package framework.cucumber.stepdefs;
 
-import framework.pom.interfaces.Cart;
-import framework.pom.interfaces.Inventory;
-import framework.pom.interfaces.Login;
-import framework.pom.interfaces.Product;
+import framework.pom.interfaces.*;
 import framework.pom.pages.InventoryPage;
 import framework.pom.pages.LoginPage;
 import framework.pom.pages.ProductPage;
@@ -20,21 +17,24 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+
 public class BuyProductsStepDefs {
     private WebDriver webDriver;
     private Inventory inventoryPage;
     private Product productPage;
+    private Cart cartPage;
+    private CheckoutInformation checkoutInformationPage;
+    private CheckoutOverview checkoutOverviewPage;
 
 
     @Before
     public void setup(){
-      /*  Util.setDriverLocation(System.getenv("ChromeDriverPath"));
+        Util.setDriverLocation(System.getenv("ChromeDriverPath"));
         webDriver= new ChromeDriver();
         Login loginPage= new LoginPage(webDriver); //starts from login page (makes sense because we always need to login)
         loginPage.inputUsername("standard_user");
         loginPage.inputPassword("secret_sauce");
         inventoryPage = loginPage.clickLogin();
-        */
     }
 
 
@@ -63,7 +63,7 @@ public class BuyProductsStepDefs {
     //ERROR BEGINS
     @And("I am on the cart page")
     public void iAmOnTheCartPage() {
-//        cartPage = inventoryPage.goToCartPage();
+        cartPage = inventoryPage.goToCartPage();
     }
 
     @When("I click Remove")
@@ -78,10 +78,13 @@ public class BuyProductsStepDefs {
 
     @When("I checkout")
     public void iCheckout() {
+        checkoutInformationPage = cartPage.goToCheckOut();
     }
 
     @And("I add information details")
     public void iAddInformationDetails() {
+        checkoutInformationPage.enterShippingDetails("First", "Last", "Zip");
+        checkoutOverviewPage = checkoutInformationPage.goToCheckoutOverview();
     }
 
     @Then("the correct items will be shown in the checkout overview")
@@ -94,6 +97,7 @@ public class BuyProductsStepDefs {
 
     @Then("I am taken to the overview checkout page")
     public void iAmTakenToTheOverviewCheckoutPage() {
+        Assertions.assertEquals("https://www.saucedemo.com/checkout-step-two.html", checkoutOverviewPage.getUrl());
     }
 
     @Then("the cart badge shows the total items in the cart")
@@ -159,7 +163,4 @@ public class BuyProductsStepDefs {
         inventoryPage.removeProduct(aProduct);
     }
 
-    @Given("I am logged in")
-    public void iAmLoggedIn() {
-    }
 }

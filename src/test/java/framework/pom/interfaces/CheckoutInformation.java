@@ -5,5 +5,5 @@ public interface CheckoutInformation extends CommonPageInterface{
     boolean isErrorIconsVisible();
     boolean isInputBoxesErrored();
     Inventory goToInventory();
-    CheckoutComplete goToCheckoutComplete();
+    CheckoutOverview goToCheckoutOverview();
 }

@@ -1,7 +1,7 @@
 package framework.pom.pages;
 
-import framework.pom.interfaces.CheckoutComplete;
 import framework.pom.interfaces.CheckoutInformation;
+import framework.pom.interfaces.CheckoutOverview;
 import framework.pom.interfaces.Inventory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -52,8 +52,8 @@ public class CheckoutInformationPage extends CommonPage implements CheckoutInfor
     }
 
     @Override
-    public CheckoutComplete goToCheckoutComplete() {
+    public CheckoutOverview goToCheckoutOverview() {
         webDriver.findElement(By.id("continue")).click();
-        return new CheckoutCompletePage(webDriver);
+        return new CheckoutOverviewPage(webDriver);
     }
 }
