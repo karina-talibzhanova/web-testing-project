@@ -29,9 +29,8 @@ public class LoginPage implements Login {
 
     @Override
     public Inventory clickLogin() {
-        webDriver.findElement(By.name("login-button")).click();
-        return new InventoryPage(webDriver);
-        //return null;
+
+        return null;
 
     }
 
