@@ -2,6 +2,7 @@ package framework.pom.pages;
 
 import framework.pom.interfaces.Inventory;
 import framework.pom.interfaces.Product;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -29,7 +30,11 @@ public class InventoryPage extends CommonPage implements Inventory {
 
     @Override
     public void removeProduct(WebElement product) {
-
+        // find the button and check it says "REMOVE"
+        WebElement button = product.findElement(By.tagName("button"));
+        if (button.getText().equals("REMOVE")) {
+            button.click();
+        }
     }
 
     @Override
