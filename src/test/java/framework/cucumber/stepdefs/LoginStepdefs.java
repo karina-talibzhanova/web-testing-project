@@ -21,7 +21,7 @@ public class LoginStepdefs {
         Util.setDriverLocation("src/test/resources/chromedriver.exe");
         webDriver= new ChromeDriver();
         loginPage= new LoginPage(webDriver); //starts from login page (makes sense because we always need to login)
-    }
+   }
 
     @After
     public void tearDown(){
