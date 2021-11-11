@@ -21,6 +21,9 @@ public abstract class CommonPage implements CommonPageInterface {
     public void openSideBar() {
         webDriver.findElement(By.id("react-burger-menu-btn")).click();
     }
+    public void openSideBar() {
+        webDriver.findElement(By.id("react-burger-menu-btn")).click();
+    }
     public boolean sidebarLinksValid(){
         WebElement inventoryLink = webDriver.findElement(By.id("inventory_sidebar_link"));
         WebElement aboutLink = webDriver.findElement(By.id("about_sidebar_link"));
@@ -53,7 +56,8 @@ public abstract class CommonPage implements CommonPageInterface {
     };
 
     public Login clickLogout() {
-        return null;
+        webDriver.findElement(By.linkText("Logout")).click();
+        return new LoginPage(webDriver);
     };
 
     public void clickResetAppState() {

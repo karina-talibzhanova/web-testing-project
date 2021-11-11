@@ -1,5 +1,6 @@
 package framework.cucumber.stepdefs;
 
+import framework.pom.pages.CommonPage;
 import framework.pom.pages.LoginPage;
 import framework.pom.util.Util;
 import io.cucumber.java.After;
@@ -12,16 +13,17 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class LoginStepdefs {
+public class LoginStepdefs{
     private WebDriver webDriver;
     private LoginPage loginPage;
+    private CommonPage commonPage;
 
     @Before
     public void setup(){
         Util.setDriverLocation(System.getenv("ChromeDriverPath"));
         webDriver= new ChromeDriver();
         loginPage= new LoginPage(webDriver); //starts from login page (makes sense because we always need to login)
-   }
+    }
 
     @After
     public void tearDown(){
@@ -34,13 +36,14 @@ public class LoginStepdefs {
 
     @When("I input a valid username")
     public void iInputAValidUsername() {
-//        loginPage.inputName("standard_user");
+        loginPage.inputUsername("standard_user");
     }
 
     @And("I input a valid password")
     public void iInputAValidPassword() {
-//        loginPage.inputPass("secret_sauce");
+        loginPage.inputPassword("secret_sauce");
     }
+
     @And("I click login")
     public void iClickLogin() {
         loginPage.clickLogin();
@@ -48,60 +51,53 @@ public class LoginStepdefs {
 
     @Then("I am taken to the inventory page")
     public void iAmTakenToTheInventoryPage() {
-        Assertions.assertEquals("https://www.saucedemo.com/inventory.html", webDriver.getCurrentUrl());
+        Assertions.assertEquals("https://www.saucedemo.com/inventory.html", loginPage.getURL());
     }
 
     @And("I input a invalid password")
     public void iInputAInvalidPassword() {
-//        loginPage.inputPass("invalid@");
+        loginPage.inputPassword("wrongpass@");
     }
 
-    @Then("I am given an error message")
-    public void iAmGivenAnErrorMessage() {
-//        Assertions.assertTrue(loginPage.checkErrorMessageExists());
+    @Then("I am given the suitable error message")
+    public void iAmGivenTheSuitableErrorMessage() {
+        Assertions.assertEquals("Epic sadface: Username and password do not match any user in this service", loginPage.getErrorMessage());
+    }
+
+    @And("the input boxes are errored")
+    public void theInputBoxesAreErrored() {
+        Assertions.assertTrue(loginPage.isInputBoxesErrored());
+    }
+
+    @And("the input boxes display an error icon")
+    public void theInputBoxesDisplayAnErrorIcon() {
+        Assertions.assertTrue(loginPage.isErrorIconsVisible());
     }
 
     @When("I input a invalid username")
     public void iInputAInvalidUsername() {
-//        loginPage.inputName("invalid@");
+        loginPage.inputUsername("wrongusername@");
     }
 
     @When("I leave username input blank")
     public void iLeaveUsernameInputBlank() {
-//        loginPage.inputName("");
+        loginPage.inputUsername("");
     }
 
     @And("I leave password input blank")
     public void iLeavePasswordInputBlank() {
-//        loginPage.inputPass("");
+        loginPage.inputPassword("");
     }
 
-    @Then("I am given an error message saying Username is required")
-    public void iAmGivenAnErrorMessageSayingUsernameIsRequired() {
-//        Assertions.assertTrue(loginPage.checkMissingUsernameErrorMessage());
+    @Then("I am given a username error message")
+    public void iAmGivenAUsernameErrorMessage() {
+        Assertions.assertEquals("Epic sadface: Username is required", loginPage.getErrorMessage());
     }
 
-    @Then("I am given an error message saying Password is required")
-    public void iAmGivenAnErrorMessageSayingPasswordIsRequired() {
-//        Assertions.assertTrue(loginPage.checkMissingPasswordErrorMessage());
+    @Then("I am given the password error message")
+    public void iAmGivenThePasswordErrorMessage() {
+        Assertions.assertEquals("Epic sadface: Password is required", loginPage.getErrorMessage());
     }
 
-    @Given("I am logged in")
-    public void iAmLoggedIn() {
-//        loginPage.inputName("standard_user");
-//        loginPage.inputPass("secret_sauce");
-        loginPage.setLoginDetails("standard_user", "secret_sauce");
-        loginPage.clickLogin();
-    }
-//
-//    @When("I click logout")
-//    public void iClickLogout() {
-//        productsPage.openSidebar();
-//        productsPage.clickLogout();
-//    }
-//
-//    @Then("I will be directed to the logout page")
-//    public void iWillBeDirectedToTheLogoutPage() {
-//        Assertions.assertEquals("https://www.saucedemo.com/",webDriver.getCurrentUrl());
-//    }
+
 }
