@@ -4,6 +4,7 @@ Feature: login validation
     Given I am on the login page
 
   Scenario: As a user, I want to be able to log in when I input a valid username and valid password
+    Given I am on the login page
     When I input a valid username
     And I input a valid password
     And I click login
@@ -13,39 +14,47 @@ Feature: login validation
     When I input a valid username
     And I input a invalid password
     And I click login
-    Then I am given an error message
+    Then I am given the suitable error message
+    And the input boxes are errored
+    And the input boxes display an error icon
 
   Scenario: As a user, I want to attempt to log in when I input a valid username and invalid password
     When I input a invalid username
     And I input a valid password
     And I click login
-    Then I am given an error message
+    Then I am given the suitable error message
+    And the input boxes are errored
+    And the input boxes display an error icon
 
   Scenario: As a user, I want to attempt to log in when I input a invalid username and invalid password
     When I input a invalid username
     And I input a invalid password
     And I click login
-    Then I am given an error message
+    Then I am given the suitable error message
+    And the input boxes are errored
+    And the input boxes display an error icon
 
   Scenario: As a user, I want to attempt to log in when I input an empty username and an empty password
     When I leave username input blank
     And I leave password input blank
     And I click login
-    Then I am given an error message saying Username is required
+    Then I am given a username error message
+    And the input boxes are errored
+    And the input boxes display an error icon
 
   Scenario: As a user, I want to attempt to log in when I input a valid username and an empty password
     When I input a valid username
     And I leave password input blank
     And I click login
-    Then I am given an error message saying Password is required
+    Then I am given the password error message
+    And the input boxes are errored
+    And the input boxes display an error icon
 
   Scenario: As a user, I want to attempt to log in when I input an empty username and a valid password
     When I leave username input blank
     And I input a valid password
     And I click login
-    Then I am given an error message saying Username is required
+    Then I am given a username error message
+    And the input boxes are errored
+    And the input boxes display an error icon
 
-#  Scenario: As a user, I want to log out of my log in session
-#    Given I am logged in
-#    When I click logout
-#    Then I will be directed to the logout page

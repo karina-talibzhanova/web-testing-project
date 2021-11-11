@@ -12,5 +12,6 @@ public interface CommonPageInterface {
     void clickResetAppState();
     void goToCompanyAboutPage();
     Cart goToCartPage();
+    String getUrl();
 
 }
