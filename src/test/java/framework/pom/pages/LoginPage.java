@@ -64,5 +64,4 @@ public class LoginPage implements Login {
 //    public boolean checkErrorMessageExists(){
 //        return webDriver.findElement(By.className("error-button")).isDisplayed();
 //    }
-
 }

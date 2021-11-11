@@ -84,8 +84,8 @@ public class BuyProductsStepDefs {
     public void iAmTakenToTheOverviewCheckoutPage() {
     }
 
-    @Then("the cart badge shows the total items added to cart")
-    public void theCartBadgeShowsTheTotalItemsAddedToCart() {
+    @Then("the cart badge shows the total items in the cart")
+    public void theCartBadgeShowsTheTotalItemsInTheCart() {
     }
 
     @And("I click the sidebar")
@@ -139,5 +139,12 @@ public class BuyProductsStepDefs {
 
     @Then("I am taken to the cart page")
     public void iAmTakenToTheCartPage() {
+    }
+
+    @When("I click Remove for an item on the inventory page")
+    public void iClickRemoveForAnItemOnTheInventoryPage() {
+        WebElement aProduct = webDriver.findElement(By.className("inventory_item"));
+        inventoryPage.addProduct(aProduct);
+        inventoryPage.removeProduct(aProduct);
     }
 }

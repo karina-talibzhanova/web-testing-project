@@ -36,7 +36,11 @@ public class InventoryPage extends CommonPage implements Inventory {
 
     @Override
     public void removeProduct(WebElement product) {
-
+        // find the button and check it says "REMOVE"
+        WebElement button = product.findElement(By.tagName("button"));
+        if (button.getText().equals("REMOVE")) {
+            button.click();
+        }
     }
 
     @Override

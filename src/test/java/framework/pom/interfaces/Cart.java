@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public interface Cart {
+public interface Cart extends CommonPageInterface{
     void removeProducts(WebElement product);
     Product goToProductPageViaTitle(String productName);
     String getProductDescription(WebElement product);
