@@ -7,62 +7,53 @@ import org.openqa.selenium.WebDriver;
 
 public class LoginPage implements Login {
     private WebDriver webDriver;
+    private InventoryPage inventoryPage;
 
     public LoginPage(WebDriver webDriver) {
         this.webDriver = webDriver;
         goToLoginPage();
     }
 
-    @Override
-    public void setLoginDetails(String username, String password) {
+    private void goToLoginPage(){
+        webDriver.get("https://www.saucedemo.com/");
+    }
 
+    @Override
+    public void inputUsername(String user) {
+        webDriver.findElement(By.name("user-name")).sendKeys(user);
+    }
+
+    @Override
+    public void inputPassword(String pass) {
+        webDriver.findElement(By.name("password")).sendKeys(pass);
     }
 
     @Override
     public Inventory clickLogin() {
-        return null;
+        webDriver.findElement(By.name("login-button")).click();
+        inventoryPage= new InventoryPage(webDriver);
+        return inventoryPage;
     }
 
     @Override
     public String getErrorMessage() {
-        return null;
+        return webDriver.findElement(By.tagName("h3")).getText();
     }
 
     @Override
     public boolean isErrorIconsVisible() {
-        return false;
+        return webDriver.findElement((By.className("error_icon"))).isDisplayed();
     }
 
     @Override
     public boolean isInputBoxesErrored() {
-        return false;
+        return webDriver.findElement(By.className("input_error")).getCssValue("border-bottom-color").equals("rgba(226, 35, 26, 1)");
     }
 
-    private void goToLoginPage(){
-        webDriver.get("https://www.saucedemo.com/");
+    @Override
+    public String getURL(){
+        return webDriver.getCurrentUrl();
     }
-//
-//    public void inputName(String name){
-//        webDriver.findElement(By.name("user-name")).sendKeys(name);
-//    }
-//
-//    public void inputPass(String pass){
-//        webDriver.findElement(By.name("password")).sendKeys(pass);
-//    }
-//
-//    public void clickLogin(){
-//        webDriver.findElement(By.name("login-button")).click();
-//    }
-//
-//    public boolean checkMissingUsernameErrorMessage(){
-//        return webDriver.findElement(By.tagName("h3")).getText().contains("Username is required");
-//    }
-//    public boolean checkMissingPasswordErrorMessage(){
-//        return webDriver.findElement(By.tagName("h3")).getText().contains("Password is required");
-//    }
-//
-//    public boolean checkErrorMessageExists(){
-//        return webDriver.findElement(By.className("error-button")).isDisplayed();
-//    }
 
+    //logout test has to be done
 }
