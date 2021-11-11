@@ -24,23 +24,21 @@ public class BuyProductsStepDefs {
     private WebDriver webDriver;
     private Inventory inventoryPage;
     private Product productPage;
-    private Cart cartPage;
+
 
     @Before
     public void setup(){
-        Util.setDriverLocation(System.getenv("ChromeDriverPath"));
+      /*  Util.setDriverLocation(System.getenv("ChromeDriverPath"));
         webDriver= new ChromeDriver();
         Login loginPage= new LoginPage(webDriver); //starts from login page (makes sense because we always need to login)
         loginPage.inputUsername("standard_user");
         loginPage.inputPassword("secret_sauce");
-        loginPage.clickLogin();
-        inventoryPage = new InventoryPage(webDriver);
+        inventoryPage = loginPage.clickLogin();
+        */
     }
 
-    @After
-    public void tearDown(){
-        webDriver.quit(); //Comment out to see process
-    }
+
+
 
 
     @When("I click Add to Cart to for an item on the inventory page")
@@ -130,12 +128,14 @@ public class BuyProductsStepDefs {
     public void iClickContinueShopping() {
     }
 
-    @When("I click the title of an item")
-    public void iClickTheTitleOfAnItem() {
+    @When("I click the {string} of an item")
+    public void iClickTheTitleOfAnItem(String title) {
+        productPage = inventoryPage.goToProductPageViaTitle(title);
     }
 
-    @Then("I am taken to the product page")
-    public void iAmTakenToTheProductPage() {
+    @Then("I am taken to the product page with {string}")
+    public void iAmTakenToTheProductPage(String title) {
+        Assertions.assertEquals(title, productPage.getProductTitle());
     }
 
     @When("I click the image of an item")
