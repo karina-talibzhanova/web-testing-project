@@ -34,12 +34,12 @@ public class LoginStepdefs {
 
     @When("I input a valid username")
     public void iInputAValidUsername() {
-        loginPage.inputName("standard_user");
+//        loginPage.inputName("standard_user");
     }
 
     @And("I input a valid password")
     public void iInputAValidPassword() {
-        loginPage.inputPass("secret_sauce");
+//        loginPage.inputPass("secret_sauce");
     }
     @And("I click login")
     public void iClickLogin() {
@@ -53,43 +53,44 @@ public class LoginStepdefs {
 
     @And("I input a invalid password")
     public void iInputAInvalidPassword() {
-        loginPage.inputPass("invalid@");
+//        loginPage.inputPass("invalid@");
     }
 
     @Then("I am given an error message")
     public void iAmGivenAnErrorMessage() {
-        Assertions.assertTrue(loginPage.checkErrorMessageExists());
+//        Assertions.assertTrue(loginPage.checkErrorMessageExists());
     }
 
     @When("I input a invalid username")
     public void iInputAInvalidUsername() {
-        loginPage.inputName("invalid@");
+//        loginPage.inputName("invalid@");
     }
 
     @When("I leave username input blank")
     public void iLeaveUsernameInputBlank() {
-        loginPage.inputName("");
+//        loginPage.inputName("");
     }
 
     @And("I leave password input blank")
     public void iLeavePasswordInputBlank() {
-        loginPage.inputPass("");
+//        loginPage.inputPass("");
     }
 
     @Then("I am given an error message saying Username is required")
     public void iAmGivenAnErrorMessageSayingUsernameIsRequired() {
-        Assertions.assertTrue(loginPage.checkMissingUsernameErrorMessage());
+//        Assertions.assertTrue(loginPage.checkMissingUsernameErrorMessage());
     }
 
     @Then("I am given an error message saying Password is required")
     public void iAmGivenAnErrorMessageSayingPasswordIsRequired() {
-        Assertions.assertTrue(loginPage.checkMissingPasswordErrorMessage());
+//        Assertions.assertTrue(loginPage.checkMissingPasswordErrorMessage());
     }
 
     @Given("I am logged in")
     public void iAmLoggedIn() {
-        loginPage.inputName("standard_user");
-        loginPage.inputPass("secret_sauce");
+//        loginPage.inputName("standard_user");
+//        loginPage.inputPass("secret_sauce");
+        loginPage.setLoginDetails("standard_user", "secret_sauce");
         loginPage.clickLogin();
     }
 //
