@@ -86,13 +86,12 @@ public class LoginStepdefs {
         Assertions.assertTrue(loginPage.checkMissingPasswordErrorMessage());
     }
 
-//    @Given("I am logged in")
-//    public void iAmLoggedIn() {
-//        loginPage.inputName("standard_user");
-//        loginPage.inputPass("secret_sauce");
-//        loginPage.clickLogin();
-//        productsPage= new ProductsPage(webDriver);
-//    }
+    @Given("I am logged in")
+    public void iAmLoggedIn() {
+        loginPage.inputName("standard_user");
+        loginPage.inputPass("secret_sauce");
+        loginPage.clickLogin();
+    }
 //
 //    @When("I click logout")
 //    public void iClickLogout() {
