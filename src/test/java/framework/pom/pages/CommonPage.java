@@ -12,15 +12,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class CommonPage implements CommonPageInterface {
-    private WebDriver webDriver;
+    protected WebDriver webDriver;
 
     public CommonPage(WebDriver webDriver) {
         this.webDriver = webDriver;
     }
 
-    public void openSideBar() {
-        webDriver.findElement(By.id("react-burger-menu-btn")).click();
-    }
     public void openSideBar() {
         webDriver.findElement(By.id("react-burger-menu-btn")).click();
     }

@@ -99,5 +99,8 @@ public class LoginStepdefs{
         Assertions.assertEquals("Epic sadface: Password is required", loginPage.getErrorMessage());
     }
 
+    @Given("I am logged in")
+    public void iAmLoggedIn() {
 
+    }
 }

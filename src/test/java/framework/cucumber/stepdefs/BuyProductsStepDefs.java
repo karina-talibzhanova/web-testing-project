@@ -27,8 +27,8 @@ public class BuyProductsStepDefs {
         Util.setDriverLocation(System.getenv("ChromeDriverPath"));
         webDriver= new ChromeDriver();
         Login loginPage= new LoginPage(webDriver); //starts from login page (makes sense because we always need to login)
-        loginPage.inputName("standard_user");
-        loginPage.inputPass("secret_sauce");
+        loginPage.inputUsername("standard_user");
+        loginPage.inputPassword("secret_sauce");
         inventoryPage = loginPage.clickLogin();
     }
 
@@ -116,17 +116,14 @@ public class BuyProductsStepDefs {
     public void iClickContinueShopping() {
     }
 
-    @When("I click the title of an item")
-    public void iClickTheTitleOfAnItem() {
-        String title = "Sauce Labs Backpack";
-        WebElement aProduct = webDriver.findElement(By.className("inventory_item"));
-        inventoryPage.addProduct(aProduct);
+    @When("I click the {string} of an item")
+    public void iClickTheTitleOfAnItem(String title) {
         productPage = inventoryPage.goToProductPageViaTitle(title);
     }
 
-    @Then("I am taken to the product page")
-    public void iAmTakenToTheProductPage() {
-        Assertions.assertEquals("https://www.saucedemo.com/inventory-item.html?id=4", webDriver.getCurrentUrl());
+    @Then("I am taken to the product page with {string}")
+    public void iAmTakenToTheProductPage(String title) {
+        Assertions.assertEquals(title, productPage.getProductTitle());
     }
 
     @When("I click the image of an item")
