@@ -16,4 +16,8 @@ public interface InventoryInterface {
     boolean isProductTitleEmpty(WebElement product);
     boolean isProductImageAltSameAsProductTitle(WebElement product);
     List<WebElement> getAllProducts();
+    String getProductTitle(WebElement product);
+    String getProductDescription(WebElement product);
+    float getProductPrice(WebElement product);
+    WebElement getProductImage(WebElement product);
 }
