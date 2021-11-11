@@ -31,7 +31,11 @@ Feature: Ability to buy products
 
   Scenario: As a user, when I add items to the cart, I can see how many items are in the cart badge
     When I click Add to Cart to for an item on the inventory page
-    Then the cart badge shows the total items added to cart
+    Then the cart badge shows the total items in the cart
+
+  Scenario: As a user, when I remove items from the cart, I can see how many items are in the cart badge
+    When I click Remove for an item on the inventory page
+    Then the cart badge shows the total items in the cart
 
   Scenario: As a user, I can click All Items anywhere on the site to go to inventory page
     And I click the sidebar
