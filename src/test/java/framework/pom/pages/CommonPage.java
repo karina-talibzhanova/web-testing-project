@@ -12,15 +12,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class CommonPage implements CommonPageInterface {
-    private WebDriver webDriver;
+    protected WebDriver webDriver;
 
     public CommonPage(WebDriver webDriver) {
         this.webDriver = webDriver;
     }
 
-    public void openSideBar() {
-        webDriver.findElement(By.id("react-burger-menu-btn")).click();
-    }
+
     public void openSideBar() {
         webDriver.findElement(By.id("react-burger-menu-btn")).click();
     }
@@ -72,7 +70,8 @@ public abstract class CommonPage implements CommonPageInterface {
     }
 
     public Cart goToCartPage() {
-        return null;
+        webDriver.findElement(By.className("shopping_cart_link")).click();
+        return new CartPage(webDriver);
     };
 
     public String getUrl(){

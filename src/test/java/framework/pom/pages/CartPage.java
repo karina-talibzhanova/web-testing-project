@@ -1,8 +1,10 @@
 package framework.pom.pages;
 
 import framework.pom.interfaces.Cart;
+import framework.pom.interfaces.CheckoutInformation;
 import framework.pom.interfaces.Inventory;
 import framework.pom.interfaces.Product;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -39,8 +41,9 @@ public class CartPage extends CommonPage implements Cart {
     }
 
     @Override
-    public void goToCheckOut() {
-
+    public CheckoutInformation goToCheckOut() {
+        webDriver.findElement(By.id("checkout")).click();
+        return new CheckoutInformationPage(webDriver);
     }
 
     @Override
