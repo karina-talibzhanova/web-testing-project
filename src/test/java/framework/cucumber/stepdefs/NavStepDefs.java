@@ -35,6 +35,11 @@ public class NavStepDefs {
 
     }
 
+    @After
+    public void teardown(){
+        webDriver.quit();
+    }
+
 
     @When("I click Reset App State")
     public void iClickResetAppState() {
@@ -107,6 +112,8 @@ public class NavStepDefs {
 
     @Then("the companies Linkedin page should load")
     public void theCompaniesLinkedinPageShouldLoad() {
-        Assertions.assertEquals("https://www.facebook.com/saucelabs", inventoryPage.getUrl());
+
+        Assertions.assertEquals("https://www.linkedin.com/company/sauce-labs/", inventoryPage.getUrl());
+
     }
 }

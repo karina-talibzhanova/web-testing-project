@@ -30,10 +30,8 @@ public class BuyProductsStepDefs {
         */
     }
 
-    @After
-    public void tearDown(){
-        webDriver.quit(); //Comment out to see process
-    }
+
+
 
 
     @When("I click Add to Cart to for an item on the inventory page")

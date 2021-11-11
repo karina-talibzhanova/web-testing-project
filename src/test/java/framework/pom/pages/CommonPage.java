@@ -37,9 +37,22 @@ public abstract class CommonPage implements CommonPageInterface {
     }
 
     public void goToCompanyFacebookPage() {
+        String originalTab = webDriver.getWindowHandle();
         WebDriverWait wait = new WebDriverWait(webDriver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("social_facebook")));
         webDriver.findElement(By.linkText("Facebook")).click();
+        //a set of every tab created
+        Set<String> allWindows = webDriver.getWindowHandles();
+        Iterator<String> I1 = allWindows.iterator();
+        while (I1.hasNext())
+        {
+            String child_window=I1.next();
+            if(!originalTab.equals(child_window)){
+                webDriver.switchTo().window(child_window);
+                System.out.println(webDriver.switchTo().window(child_window).getTitle());
+                break;
+            }
+        }
     }
 
     public void goToCompanyTwitterPage() {
@@ -63,9 +76,21 @@ public abstract class CommonPage implements CommonPageInterface {
     }
 
     public void goToCompanyLinkedInPage() {
+        String originalTab = webDriver.getWindowHandle();
         WebDriverWait wait = new WebDriverWait(webDriver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("social_linkedin")));
         webDriver.findElement(By.linkText("LinkedIn")).click();
+        Set<String> allWindows = webDriver.getWindowHandles();
+        Iterator<String> I1 = allWindows.iterator();
+        while (I1.hasNext())
+        {
+            String child_window=I1.next();
+            if(!originalTab.equals(child_window)){
+                webDriver.switchTo().window(child_window);
+                System.out.println(webDriver.switchTo().window(child_window).getTitle());
+                break;
+            }
+        }
     }
 
     public Integer getCartBadgeNumber() {
