@@ -25,10 +25,6 @@ public class LoginStepdefs{
         loginPage= new LoginPage(webDriver); //starts from login page (makes sense because we always need to login)
     }
 
-    @After
-    public void tearDown(){
-        webDriver.quit(); //Comment out to see process
-    }
 
     @Given("I am on the login page")
     public void iAmOnTheLoginPage() {
@@ -100,4 +96,21 @@ public class LoginStepdefs{
     }
 
 
+    @Given("I am logged in")
+    public void iAmLoggedIn() {
+        loginPage.inputUsername("standard_user");
+        loginPage.inputPassword("secret_sauce");
+        loginPage.clickLogin();
+    }
+//
+//    @When("I click logout")
+//    public void iClickLogout() {
+//        productsPage.openSidebar();
+//        productsPage.clickLogout();
+//    }
+//
+//    @Then("I will be directed to the logout page")
+//    public void iWillBeDirectedToTheLogoutPage() {
+//        Assertions.assertEquals("https://www.saucedemo.com/",webDriver.getCurrentUrl());
+//    }
 }
