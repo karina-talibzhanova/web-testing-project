@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public interface CartInterface {
+public interface Cart {
     void removeProducts(WebElement product);
     Product goToProductPageViaTitle(String productName);
     String getProductDescription(WebElement product);
@@ -12,5 +12,5 @@ public interface CartInterface {
     float getProductPrice(WebElement product);
     void goToCheckOut();
     List<WebElement> getAllProducts();
-    Iventory goToInventory();
+    Inventory goToInventory();
 }
