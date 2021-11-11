@@ -2,6 +2,7 @@ package framework.cucumber.stepdefs;
 
 import framework.pom.interfaces.Inventory;
 import framework.pom.interfaces.Login;
+import framework.pom.interfaces.Product;
 import framework.pom.pages.InventoryPage;
 import framework.pom.pages.LoginPage;
 import framework.pom.util.Util;
@@ -10,6 +11,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,14 +20,15 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class BuyProductsStepDefs {
     private WebDriver webDriver;
     private Inventory inventoryPage;
+    private Product productPage;
 
     @Before
     public void setup(){
-        Util.setDriverLocation("src/test/resources/chromedriver.exe");
+        Util.setDriverLocation(System.getenv("ChromeDriverPath"));
         webDriver= new ChromeDriver();
         Login loginPage= new LoginPage(webDriver); //starts from login page (makes sense because we always need to login)
         loginPage.inputName("standard_user");
-        loginPage.inputPass("password");
+        loginPage.inputPass("secret_sauce");
         inventoryPage = loginPage.clickLogin();
     }
 
@@ -115,10 +118,15 @@ public class BuyProductsStepDefs {
 
     @When("I click the title of an item")
     public void iClickTheTitleOfAnItem() {
+        String title = "Sauce Labs Backpack";
+        WebElement aProduct = webDriver.findElement(By.className("inventory_item"));
+        inventoryPage.addProduct(aProduct);
+        productPage = inventoryPage.goToProductPageViaTitle(title);
     }
 
     @Then("I am taken to the product page")
     public void iAmTakenToTheProductPage() {
+        Assertions.assertEquals("https://www.saucedemo.com/inventory-item.html?id=4", webDriver.getCurrentUrl());
     }
 
     @When("I click the image of an item")

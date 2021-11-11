@@ -41,6 +41,18 @@ public class InventoryPage extends CommonPage implements Inventory {
 
     @Override
     public Product goToProductPageViaTitle(String productName) {
+        System.out.println("do we even make it here");
+        System.out.println(webDriver);
+        List<WebElement> productTitles = webDriver.findElements(By.className("inventory_item_label"));
+        WebElement productTitleLink;
+        for (WebElement productTitle : productTitles) {
+            if (productTitle.findElement(By.className("inventory_item_name")).getText().equals(productName)) {
+                System.out.println("found");
+                productTitleLink = productTitle;
+                productTitleLink.findElement(By.tagName("a")).click();
+                return new ProductPage(webDriver);
+            }
+        }
         return null;
     }
 
