@@ -2,12 +2,14 @@ package framework.pom.pages;
 
 import framework.pom.interfaces.Inventory;
 import framework.pom.interfaces.Product;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
 public class InventoryPage extends CommonPage implements Inventory {
+    private WebDriver webDriver;
     public InventoryPage(WebDriver webDriver) {
         super(webDriver);
     }
@@ -24,7 +26,12 @@ public class InventoryPage extends CommonPage implements Inventory {
 
     @Override
     public void addProduct(WebElement product) {
-
+        // given an inventory_item, click the button that says "ADD TO CART"
+        WebElement button = product.findElement(By.tagName("button"));
+        // make sure the button is the "ADD TO CART" button
+        if (button.getText().equals("ADD TO CART")) {
+            button.click();
+        }
     }
 
     @Override
