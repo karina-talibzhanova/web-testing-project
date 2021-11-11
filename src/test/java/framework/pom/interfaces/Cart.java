@@ -1,4 +1,4 @@
-package framework.pom.pages;
+package framework.pom.interfaces;
 
 import org.openqa.selenium.WebElement;
 
@@ -9,7 +9,7 @@ public interface Cart {
     Product goToProductPageViaTitle(String productName);
     String getProductDescription(WebElement product);
     String getProductTitle(WebElement product);
-    double getProductPrice(WebElement product);
+    float getProductPrice(WebElement product);
     void goToCheckOut();
     List<WebElement> getAllProducts();
     Inventory goToInventory();

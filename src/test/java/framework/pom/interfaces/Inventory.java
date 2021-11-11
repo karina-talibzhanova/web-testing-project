@@ -1,6 +1,5 @@
-package framework.pom.pages;
+package framework.pom.interfaces;
 
-import io.cucumber.java.af.En;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -18,6 +17,6 @@ public interface Inventory {
     List<WebElement> getAllProducts();
     String getProductTitle(WebElement product);
     String getProductDescription(WebElement product);
-    double getProductPrice(WebElement product);
+    float getProductPrice(WebElement product);
     WebElement getProductImage(WebElement product);
 }
