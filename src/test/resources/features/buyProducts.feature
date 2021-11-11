@@ -31,7 +31,11 @@ Feature: Ability to buy products
 
   Scenario: As a user, when I add items to the cart, I can see how many items are in the cart badge
     When I click Add to Cart to for an item on the inventory page
-    Then the cart badge shows the total items added to cart
+    Then the cart badge shows the total items in the cart
+
+  Scenario: As a user, when I remove items from the cart, I can see how many items are in the cart badge
+    When I click Remove for an item on the inventory page
+    Then the cart badge shows the total items in the cart
 
   Scenario: As a user, I can click All Items anywhere on the site to go to inventory page
     And I click the sidebar
@@ -40,7 +44,7 @@ Feature: Ability to buy products
 
   Scenario: As a user, when I am on the product page, I can return to the inventory page
     And I am on a product page
-    When I click Back to Prodcuts
+    When I click Back to Products
     Then I am taken to the inventory page
 
   Scenario: As a user, when I on the checkout overview, I can Cancel checkout and return to the inventory page
@@ -49,7 +53,7 @@ Feature: Ability to buy products
     And I add information details
     And I am on the checkout overview page
     When I click Cancel
-    Then I am taken to the invetory page
+    Then I am taken to the inventory page
 
   Scenario: As a user, when I on the cart page, I can click Continue Shopping and return to the inventory page
     And I am on the cart page
