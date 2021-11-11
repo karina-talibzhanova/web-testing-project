@@ -9,7 +9,7 @@ public interface Cart {
     Product goToProductPageViaTitle(String productName);
     String getProductDescription(WebElement product);
     String getProductTitle(WebElement product);
-    float getProductPrice(WebElement product);
+    double getProductPrice(WebElement product);
     void goToCheckOut();
     List<WebElement> getAllProducts();
     Inventory goToInventory();

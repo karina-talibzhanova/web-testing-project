@@ -18,6 +18,6 @@ public interface Inventory {
     List<WebElement> getAllProducts();
     String getProductTitle(WebElement product);
     String getProductDescription(WebElement product);
-    float getProductPrice(WebElement product);
+    double getProductPrice(WebElement product);
     WebElement getProductImage(WebElement product);
 }
