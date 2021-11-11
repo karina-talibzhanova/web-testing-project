@@ -8,6 +8,8 @@ import framework.pom.pages.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class CommonPage implements CommonPageInterface {
     private WebDriver webDriver;
@@ -59,12 +61,19 @@ public abstract class CommonPage implements CommonPageInterface {
     }
 
     public void goToCompanyAboutPage() {
+
+        WebDriverWait wait = new WebDriverWait(webDriver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("about_sidebar_link")));
         webDriver.findElement(By.id("about_sidebar_link")).click();
     }
 
     public Cart goToCartPage() {
         return null;
     };
+
+    public String getUrl(){
+        return webDriver.getCurrentUrl();
+    }
 
 
 }
