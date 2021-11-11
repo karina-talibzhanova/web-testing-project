@@ -3,7 +3,6 @@ package framework.cucumber.stepdefs;
 import framework.pom.interfaces.Inventory;
 import framework.pom.pages.CartPage;
 import framework.pom.pages.CommonPage;
-import framework.pom.pages.InventoryPage;
 import framework.pom.pages.LoginPage;
 import framework.pom.util.Util;
 import io.cucumber.java.After;
@@ -14,18 +13,14 @@ import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class NavStepDefs {
     private WebDriver webDriver;
-    private CommonPage commonPage;
-    private CartPage cartPage;
     private LoginPage loginPage;
     private Inventory inventoryPage;
-
 
     @Before
     public void setup(){
@@ -42,6 +37,7 @@ public class NavStepDefs {
     public void tearDown(){
         webDriver.quit();
     }
+
 
     @When("I click Reset App State")
     public void iClickResetAppState() {
