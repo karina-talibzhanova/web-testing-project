@@ -1,5 +1,6 @@
-package framework.pom.pages;
+package framework.pom.interfaces;
 
+import framework.pom.interfaces.Inventory;
 import org.openqa.selenium.WebElement;
 
 public interface Product {

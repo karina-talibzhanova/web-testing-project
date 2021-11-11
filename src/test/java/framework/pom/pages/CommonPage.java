@@ -1,5 +1,8 @@
-package framework.pom;
+package framework.pom.pages;
 
+import framework.pom.interfaces.Cart;
+import framework.pom.interfaces.Inventory;
+import framework.pom.interfaces.Login;
 import framework.pom.pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 
@@ -26,7 +29,7 @@ public abstract class CommonPage {
         return null;
     };
 
-    public LoginPage clickLogout() {
+    public Login clickLogout() {
         return null;
     };
 

@@ -1,6 +1,5 @@
-package framework.pom.pages;
+package framework.pom.interfaces;
 
-import io.cucumber.java.af.En;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;

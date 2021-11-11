@@ -1,4 +1,4 @@
-package framework.pom.pages;
+package framework.pom.interfaces;
 
 import org.openqa.selenium.WebElement;
 
