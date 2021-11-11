@@ -25,10 +25,6 @@ public class LoginStepdefs{
         loginPage= new LoginPage(webDriver); //starts from login page (makes sense because we always need to login)
     }
 
-    @After
-    public void tearDown(){
-        webDriver.quit(); //Comment out to see process
-    }
 
     @Given("I am on the login page")
     public void iAmOnTheLoginPage() {
@@ -101,6 +97,5 @@ public class LoginStepdefs{
 
     @Given("I am logged in")
     public void iAmLoggedIn() {
-
     }
 }
