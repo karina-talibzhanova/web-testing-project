@@ -40,7 +40,7 @@ Feature: Ability to buy products
 
   Scenario: As a user, when I am on the product page, I can return to the inventory page
     And I am on a product page
-    When I click Back to Prodcuts
+    When I click Back to Products
     Then I am taken to the inventory page
 
   Scenario: As a user, when I on the checkout overview, I can Cancel checkout and return to the inventory page
@@ -49,7 +49,7 @@ Feature: Ability to buy products
     And I add information details
     And I am on the checkout overview page
     When I click Cancel
-    Then I am taken to the invetory page
+    Then I am taken to the inventory page
 
   Scenario: As a user, when I on the cart page, I can click Continue Shopping and return to the inventory page
     And I am on the cart page
