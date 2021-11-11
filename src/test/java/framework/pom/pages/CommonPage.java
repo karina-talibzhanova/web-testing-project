@@ -73,7 +73,7 @@ public abstract class CommonPage implements CommonPageInterface {
 
     public Cart goToCartPage() {
         return null;
-    };
+    }
 
     public String getUrl(){
         return webDriver.getCurrentUrl();
