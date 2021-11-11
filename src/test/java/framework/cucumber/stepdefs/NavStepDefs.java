@@ -27,8 +27,8 @@ public class NavStepDefs {
         Util.setDriverLocation(System.getenv("ChromeDriverPath"));
         webDriver= new ChromeDriver();
         loginPage= new LoginPage(webDriver);
-        loginPage.inputName("standard_user");
-        loginPage.inputPass("secret_sauce");
+        loginPage.inputUsername("standard_user");
+        loginPage.inputPassword("secret_sauce");
         inventoryPage = loginPage.clickLogin();
 
     }
