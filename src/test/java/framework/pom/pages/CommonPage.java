@@ -1,6 +1,7 @@
 package framework.pom.pages;
 
 import framework.pom.interfaces.Cart;
+import framework.pom.interfaces.CommonPageInterface;
 import framework.pom.interfaces.Inventory;
 import framework.pom.interfaces.Login;
 import framework.pom.pages.LoginPage;
@@ -8,7 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public abstract class CommonPage {
+public abstract class CommonPage implements CommonPageInterface {
     private WebDriver webDriver;
 
     public CommonPage(WebDriver webDriver) {
@@ -23,10 +24,14 @@ public abstract class CommonPage {
         WebElement aboutLink = webDriver.findElement(By.id("about_sidebar_link"));
         WebElement logoutLink = webDriver.findElement(By.id("logout_sidebar_link"));
         WebElement resetLink = webDriver.findElement(By.id("reset_sidebar_link"));
-        return inventoryLink.getText().equals("All Items")
-                && aboutLink.getText().equals("About")
-                && logoutLink.getText().equals("Logout")
-                && resetLink.getText().equals("Reset App State");
+        System.out.println(inventoryLink.getText());
+        System.out.println(aboutLink.getText());
+        System.out.println(logoutLink.getText());
+        System.out.println(resetLink.getText());
+        return inventoryLink.getText().contains("ALL ITEMS")
+                && aboutLink.getText().contains("ABOUT")
+                && logoutLink.getText().contains("LOGOUT")
+                && resetLink.getText().contains("RESET APP STATE");
     }
 
     public void goToCompanyFacebookPage() {

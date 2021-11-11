@@ -25,8 +25,8 @@ public class BuyProductsStepDefs {
         webDriver= new ChromeDriver();
         Login loginPage= new LoginPage(webDriver); //starts from login page (makes sense because we always need to login)
         loginPage.inputName("standard_user");
-        loginPage.inputPass("password");
-        inventoryPage = loginPage.clickLogin();
+        loginPage.inputPass("secret_sauce");
+        //inventoryPage = loginPage.clickLogin();
     }
 
     @After
