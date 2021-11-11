@@ -7,6 +7,7 @@ Feature: Ability to buy products
     Then the item is added to cart
 
   Scenario: As a user, I want to be able to remove an item from cart
+    And I have an item in cart
     And I am on the cart page
     When I click Remove
     Then the item is removed from the cart

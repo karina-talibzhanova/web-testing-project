@@ -1,14 +1,17 @@
 package framework.cucumber.stepdefs;
 
+import framework.pom.interfaces.Cart;
 import framework.pom.interfaces.Inventory;
 import framework.pom.interfaces.Login;
 import framework.pom.interfaces.Product;
 import framework.pom.pages.InventoryPage;
 import framework.pom.pages.LoginPage;
+import framework.pom.pages.ProductPage;
 import framework.pom.util.Util;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
@@ -21,6 +24,7 @@ public class BuyProductsStepDefs {
     private WebDriver webDriver;
     private Inventory inventoryPage;
     private Product productPage;
+
 
     @Before
     public void setup(){
@@ -51,12 +55,21 @@ public class BuyProductsStepDefs {
     public void theItemIsAddedToCart() {
     }
 
+    @And("I have an item in cart")
+    public void iHaveAnItemInCart() {
+//        inventoryPage.addProduct(webDriver.findElement(By.className("inventory_item")));
+    }
+
+    //ERROR BEGINS
     @And("I am on the cart page")
     public void iAmOnTheCartPage() {
+//        cartPage = inventoryPage.goToCartPage();
     }
 
     @When("I click Remove")
     public void iClickRemove() {
+//        WebElement aProduct = webDriver.findElement(By.className("cart_item"));
+//        cartPage.removeProducts(aProduct);
     }
 
     @Then("the item is removed from the cart")
@@ -127,6 +140,8 @@ public class BuyProductsStepDefs {
 
     @When("I click the image of an item")
     public void iClickTheImageOfAnItem() {
+        webDriver.findElement(By.className("inventory_item_img")).click();
+        productPage = new ProductPage(webDriver);
     }
 
     @When("I click the cart badge")
@@ -142,5 +157,9 @@ public class BuyProductsStepDefs {
         WebElement aProduct = webDriver.findElement(By.className("inventory_item"));
         inventoryPage.addProduct(aProduct);
         inventoryPage.removeProduct(aProduct);
+    }
+
+    @Given("I am logged in")
+    public void iAmLoggedIn() {
     }
 }
