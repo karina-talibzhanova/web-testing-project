@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 
 public class LoginPage implements Login {
     private WebDriver webDriver;
-    private InventoryPage inventoryPage;
 
     public LoginPage(WebDriver webDriver) {
         this.webDriver = webDriver;
@@ -31,8 +30,7 @@ public class LoginPage implements Login {
     @Override
     public Inventory clickLogin() {
         webDriver.findElement(By.name("login-button")).click();
-        inventoryPage= new InventoryPage(webDriver);
-        return inventoryPage;
+        return new InventoryPage(webDriver);
     }
 
     @Override

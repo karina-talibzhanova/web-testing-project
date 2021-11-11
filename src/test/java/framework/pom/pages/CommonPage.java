@@ -9,7 +9,6 @@ import org.openqa.selenium.WebDriver;
 
 public abstract class CommonPage {
     private WebDriver webDriver;
-    private LoginPage loginPage;
 
     public CommonPage(WebDriver webDriver) {
         this.webDriver = webDriver;
@@ -34,9 +33,8 @@ public abstract class CommonPage {
     };
 
     public Login clickLogout() {
-        loginPage= new LoginPage(webDriver);
         webDriver.findElement(By.linkText("Logout")).click();
-        return loginPage;
+        return new LoginPage(webDriver);
     };
 
     public void clickResetAppState() {}
