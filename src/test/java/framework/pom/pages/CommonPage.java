@@ -24,10 +24,6 @@ public abstract class CommonPage implements CommonPageInterface {
         WebElement aboutLink = webDriver.findElement(By.id("about_sidebar_link"));
         WebElement logoutLink = webDriver.findElement(By.id("logout_sidebar_link"));
         WebElement resetLink = webDriver.findElement(By.id("reset_sidebar_link"));
-        System.out.println(inventoryLink.getText());
-        System.out.println(aboutLink.getText());
-        System.out.println(logoutLink.getText());
-        System.out.println(resetLink.getText());
         return inventoryLink.getText().contains("ALL ITEMS")
                 && aboutLink.getText().contains("ABOUT")
                 && logoutLink.getText().contains("LOGOUT")
