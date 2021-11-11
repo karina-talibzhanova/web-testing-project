@@ -3,6 +3,7 @@ package framework.pom.pages;
 import framework.pom.interfaces.Cart;
 import framework.pom.interfaces.Inventory;
 import framework.pom.interfaces.Product;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -15,7 +16,10 @@ public class CartPage extends CommonPage implements Cart {
 
     @Override
     public void removeProducts(WebElement product) {
-
+        WebElement button = product.findElement(By.tagName("button"));
+        if (button.getText().equals("REMOVE")) {
+            button.click();
+        }
     }
 
     @Override
