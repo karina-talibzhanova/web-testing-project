@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 public interface Product {
     String getProductTitle();
     String getProductDescription();
-    float getProductPrice();
+    double getProductPrice();
     WebElement getProductImage();
     void addToCart();
     void removeFromCart();
