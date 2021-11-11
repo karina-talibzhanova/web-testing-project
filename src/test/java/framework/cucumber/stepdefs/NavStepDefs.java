@@ -24,7 +24,7 @@ public class NavStepDefs {
 
     @Before
     public void setup(){
-        Util.setDriverLocation("src/test/resources/chromedriver.exe");
+        Util.setDriverLocation(System.getenv("ChromeDriverPath"));
         webDriver= new ChromeDriver();
         loginPage= new LoginPage(webDriver);
         loginPage.inputName("standard_user");
@@ -57,10 +57,12 @@ public class NavStepDefs {
 
     @And("I click About")
     public void iClickAbout() {
+        inventoryPage.goToCompanyAboutPage();
     }
 
     @Then("the company's page will load")
     public void theCompanySPageWillLoad() {
+        Assertions.assertEquals("https://saucelabs.com/",inventoryPage.getUrl());
     }
 
     @Then("I will see links to All Items, About, Logout and Reset App State")

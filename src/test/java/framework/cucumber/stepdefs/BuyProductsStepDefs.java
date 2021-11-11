@@ -21,7 +21,7 @@ public class BuyProductsStepDefs {
 
     @Before
     public void setup(){
-        Util.setDriverLocation("src/test/resources/chromedriver.exe");
+        Util.setDriverLocation(System.getenv("ChromeDriverPath"));
         webDriver= new ChromeDriver();
         Login loginPage= new LoginPage(webDriver); //starts from login page (makes sense because we always need to login)
         loginPage.inputName("standard_user");
