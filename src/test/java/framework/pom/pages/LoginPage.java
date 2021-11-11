@@ -27,4 +27,15 @@ public class LoginPage {
         webDriver.findElement(By.name("login-button")).click();
     }
 
+    public boolean checkMissingUsernameErrorMessage(){
+        return webDriver.findElement(By.tagName("h3")).getText().contains("Username is required");
+    }
+    public boolean checkMissingPasswordErrorMessage(){
+        return webDriver.findElement(By.tagName("h3")).getText().contains("Password is required");
+    }
+
+    public boolean checkErrorMessageExists(){
+        return webDriver.findElement(By.className("error-button")).isDisplayed();
+    }
+
 }

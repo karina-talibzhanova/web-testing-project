@@ -32,14 +32,6 @@ public class LoginStepdefs {
     public void iAmOnTheLoginPage() {
     }
 
-
-    @Given("I am logged in")
-    public void iAmLoggedIn() {
-        loginPage.inputName("standard_user");
-        loginPage.inputPass("secret_sauce");
-        loginPage.clickLogin();
-    }
-
     @When("I input a valid username")
     public void iInputAValidUsername() {
         loginPage.inputName("standard_user");
@@ -59,4 +51,56 @@ public class LoginStepdefs {
         Assertions.assertEquals("https://www.saucedemo.com/inventory.html", webDriver.getCurrentUrl());
     }
 
+    @And("I input a invalid password")
+    public void iInputAInvalidPassword() {
+        loginPage.inputPass("invalid@");
+    }
+
+    @Then("I am given an error message")
+    public void iAmGivenAnErrorMessage() {
+        Assertions.assertTrue(loginPage.checkErrorMessageExists());
+    }
+
+    @When("I input a invalid username")
+    public void iInputAInvalidUsername() {
+        loginPage.inputName("invalid@");
+    }
+
+    @When("I leave username input blank")
+    public void iLeaveUsernameInputBlank() {
+        loginPage.inputName("");
+    }
+
+    @And("I leave password input blank")
+    public void iLeavePasswordInputBlank() {
+        loginPage.inputPass("");
+    }
+
+    @Then("I am given an error message saying Username is required")
+    public void iAmGivenAnErrorMessageSayingUsernameIsRequired() {
+        Assertions.assertTrue(loginPage.checkMissingUsernameErrorMessage());
+    }
+
+    @Then("I am given an error message saying Password is required")
+    public void iAmGivenAnErrorMessageSayingPasswordIsRequired() {
+        Assertions.assertTrue(loginPage.checkMissingPasswordErrorMessage());
+    }
+
+    @Given("I am logged in")
+    public void iAmLoggedIn() {
+        loginPage.inputName("standard_user");
+        loginPage.inputPass("secret_sauce");
+        loginPage.clickLogin();
+    }
+//
+//    @When("I click logout")
+//    public void iClickLogout() {
+//        productsPage.openSidebar();
+//        productsPage.clickLogout();
+//    }
+//
+//    @Then("I will be directed to the logout page")
+//    public void iWillBeDirectedToTheLogoutPage() {
+//        Assertions.assertEquals("https://www.saucedemo.com/",webDriver.getCurrentUrl());
+//    }
 }
