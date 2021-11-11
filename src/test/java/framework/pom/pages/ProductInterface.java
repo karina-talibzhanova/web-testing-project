@@ -2,7 +2,7 @@ package framework.pom.pages;
 
 import org.openqa.selenium.WebElement;
 
-public interface ProductInterface {
+public interface Product {
     String getProductTitle();
     String getProductDescription();
     float getProductPrice();
