@@ -74,8 +74,6 @@ public class BuyProductsStepDefs {
     }
 
 
-
-
     @Then("I do not go to the overview checkout page")
     public void iDoNotGoToTheOverviewCheckoutPage() {
         Assertions.assertEquals("https://www.saucedemo.com/checkout-step-one.html", webDriver.getCurrentUrl());
@@ -98,44 +96,41 @@ public class BuyProductsStepDefs {
         checkoutInformationPage.goToCheckoutOverview();
     }
 
-//    @When("I click Add to Cart for an item on the product page")
-//    public void iClickAddToCartForAnItemOnTheProductPage() {
-//        productPage.addToCart();
-//    }
 //
 //    @Then("the item is added to cart")
 //    public void theItemIsAddedToCart() {
 //
 //    }
 //
-//    @And("I have an item in cart")
-//    public void iHaveAnItemInCart() {
-////        inventoryPage.addProduct(webDriver.findElement(By.className("inventory_item")));
-//    }
-//
-//    //ERROR BEGINS
-//    @And("I am on the cart page")
-//    public void iAmOnTheCartPage() {
-////        cartPage = inventoryPage.goToCartPage();
-//    }
-//
-//    @When("I click Remove")
-//    public void iClickRemove() {
-////        WebElement aProduct = webDriver.findElement(By.className("cart_item"));
-////        cartPage.removeProducts(aProduct);
-//    }
+    @And("I have an item in cart")
+    public void iHaveAnItemInCart() {
+        inventoryPage.addProduct(webDriver.findElement(By.className("inventory_item")));
+    }
+
+    @And("I am on the cart page")
+    public void iAmOnTheCartPage() {
+        cartPage = inventoryPage.goToCartPage();
+    }
+
+    @When("I click Remove")
+    public void iClickRemove() {
+        WebElement aProduct = webDriver.findElement(By.className("cart_item"));
+        cartPage.removeProducts(aProduct);
+    }
 //
 //    @Then("the item is removed from the cart")
 //    public void theItemIsRemovedFromTheCart() {
 //    }
 //
-//    @When("I checkout")
-//    public void iCheckout() {
-//    }
-//
-//    @And("I add information details")
-//    public void iAddInformationDetails() {
-//    }
+    @When("I checkout")
+    public void iCheckout() {
+        checkoutInformationPage = cartPage.goToCheckOut();
+    }
+
+    @And("I add information details")
+    public void iAddInformationDetails() {
+        checkoutInformationPage.enterShippingDetails("First", "Last", "Zip");
+    }
 //
 //    @Then("the correct items will be shown in the checkout overview")
 //    public void theCorrectItemsWillBeShownInTheCheckoutOverview() {
@@ -145,9 +140,10 @@ public class BuyProductsStepDefs {
 //    public void theCorrectTotalIsShownInTheCheckoutOverview() {
 //    }
 //
-//    @Then("I am taken to the overview checkout page")
-//    public void iAmTakenToTheOverviewCheckoutPage() {
-//    }
+    @Then("I am taken to the overview checkout page")
+    public void iAmTakenToTheOverviewCheckoutPage() {
+        checkoutOverviewPage = checkoutInformationPage.goToCheckoutOverview();
+    }
 //
 //    @And("I click the sidebar")
 //    public void iClickTheSidebar() {
@@ -162,26 +158,26 @@ public class BuyProductsStepDefs {
 //    }
 //
 //
-//    @When("I click the {string} of an item")
-//    public void iClickTheTitleOfAnItem(String title) {
-//        productPage = inventoryPage.goToProductPageViaTitle(title);
-//    }
-//
-//    @Then("I am taken to the product page with {string}")
-//    public void iAmTakenToTheProductPage(String title) {
-//        Assertions.assertEquals(title, productPage.getProductTitle());
-//    }
-//
-//    @When("I click the image of an item")
-//    public void iClickTheImageOfAnItem() {
-//        webDriver.findElement(By.className("inventory_item_img")).click();
-//        productPage = new ProductPage(webDriver);
-//    }
-//    @When("I click Remove for an item on the inventory page")
-//    public void iClickRemoveForAnItemOnTheInventoryPage() {
-//        WebElement aProduct = webDriver.findElement(By.className("inventory_item"));
-//        inventoryPage.addProduct(aProduct);
-//        inventoryPage.removeProduct(aProduct);
-//    }
+    @When("I click the {string} of an item")
+    public void iClickTheTitleOfAnItem(String title) {
+        productPage = inventoryPage.goToProductPageViaTitle(title);
+    }
+
+    @Then("I am taken to the product page with {string}")
+    public void iAmTakenToTheProductPage(String title) {
+        Assertions.assertEquals(title, productPage.getProductTitle());
+    }
+
+    @When("I click the image of an item")
+    public void iClickTheImageOfAnItem() {
+        webDriver.findElement(By.className("inventory_item_img")).click();
+        productPage = new ProductPage(webDriver);
+    }
+    @When("I click Remove for an item on the inventory page")
+    public void iClickRemoveForAnItemOnTheInventoryPage() {
+        WebElement aProduct = webDriver.findElement(By.className("inventory_item"));
+        inventoryPage.addProduct(aProduct);
+        inventoryPage.removeProduct(aProduct);
+    }
 
 }
