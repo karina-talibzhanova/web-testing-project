@@ -51,8 +51,6 @@ public class BuyProductsStepDefs {
 
     @Then("the cart badge shows the {int} total items in the cart")
     public void theCartBadgeShowsTheTotalItemsInTheCart(int number) {
-        System.out.println(number);
-        System.out.println(inventoryPage.cartNumber());
         Assertions.assertEquals(number, inventoryPage.cartNumber());
     }
 
