@@ -30,14 +30,14 @@ public class CheckoutInformationPage extends CommonPage implements CheckoutInfor
 
     @Override
     public boolean isInputBoxesErrored() {
-        List<WebElement> errorForms = webDriver.findElements(By.className("error"));
+        List<WebElement> errorForms = webDriver.findElements(By.className("input_error"));
 
         if (errorForms.size() != 3) {
             return false;
         }
 
         for (WebElement errorForm : errorForms) {
-            if (!errorForm.getCssValue("bottom-border-colour").equals("#e2231a")) {
+            if (!errorForm.getCssValue("border-bottom-color").equals("rgba(226, 35, 26, 1)")) {
                 return false;
             }
         }

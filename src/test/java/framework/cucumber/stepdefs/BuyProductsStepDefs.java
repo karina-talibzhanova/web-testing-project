@@ -17,6 +17,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.List;
+
 
 public class BuyProductsStepDefs {
     private WebDriver webDriver;
@@ -36,9 +38,6 @@ public class BuyProductsStepDefs {
         loginPage.inputPassword("secret_sauce");
         inventoryPage = loginPage.clickLogin();
     }
-
-
-
 
 
     @When("I click Add to Cart to for an item on the inventory page")
@@ -161,6 +160,30 @@ public class BuyProductsStepDefs {
         WebElement aProduct = webDriver.findElement(By.className("inventory_item"));
         inventoryPage.addProduct(aProduct);
         inventoryPage.removeProduct(aProduct);
+    }
+
+
+
+    @Then("I do not go to the overview checkout page")
+    public void iDoNotGoToTheOverviewCheckoutPage() {
+        Assertions.assertEquals("https://www.saucedemo.com/checkout-step-one.html", webDriver.getCurrentUrl());
+    }
+
+    @And("I see an appropriate error response")
+    public void iSeeAnAppropriateErrorResponse() {
+        checkoutInformationPage.isInputBoxesErrored();
+        Assertions.assertTrue(checkoutInformationPage.isErrorIconsVisible() && checkoutInformationPage.isInputBoxesErrored());
+    }
+
+    @And("I don't add all information {string}")
+    public void iDonTAddAllInformation(String arg) {
+        List<String> details = new java.util.ArrayList<>(List.of(arg.split(",")));
+        for (int i = 0; i < details.size(); i++) {
+            details.set(i, details.get(i).trim());
+        }
+        System.out.println(details);
+        checkoutInformationPage.enterShippingDetails(details.get(0), details.get(1), details.get(2));
+        checkoutInformationPage.goToCheckoutOverview();
     }
 
 }
