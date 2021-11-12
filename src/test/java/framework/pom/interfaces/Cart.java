@@ -10,7 +10,7 @@ public interface Cart extends CommonPageInterface{
     String getProductDescription(WebElement product);
     String getProductTitle(WebElement product);
     float getProductPrice(WebElement product);
-    void goToCheckOut();
+    CheckoutInformation goToCheckOut();
     List<WebElement> getAllProducts();
     Inventory goToInventory();
 }
