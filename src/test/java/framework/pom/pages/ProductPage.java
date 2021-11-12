@@ -18,7 +18,7 @@ public class ProductPage extends CommonPage implements Product {
 
     @Override
     public String getProductDescription() {
-        return null;
+        return webDriver.findElement(By.className("inventory_details_desc")).getText();
     }
 
     @Override
