@@ -34,11 +34,7 @@ public class BuyProductsStepDefs {
     public void setup(){
         Util.setDriverLocation(System.getenv("ChromeDriverPath"));
         webDriver= Util.getWebDriver();
-        Login loginPage= new LoginPage(webDriver); //starts from login page (makes sense because we always need to login)
-        loginPage.inputUsername("standard_user");
-        loginPage.inputPassword("secret_sauce");
-        inventoryPage = loginPage.clickLogin();
-
+        inventoryPage = Util.login("standard_user", "secret_sauce");
     }
 
 

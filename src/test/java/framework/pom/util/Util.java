@@ -1,5 +1,10 @@
 package framework.pom.util;
 
+import framework.pom.interfaces.Inventory;
+import framework.pom.interfaces.Login;
+import framework.pom.pages.InventoryPage;
+import framework.pom.pages.LoginPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
@@ -31,6 +36,14 @@ public class Util {
 
     public static WebDriver getWebDriver() {
         return webDriver;
+    }
+
+    public static Inventory login(String username, String password) {
+        Login loginPage = new LoginPage(webDriver);
+        loginPage.inputUsername(username);
+        loginPage.inputPassword(password);
+        loginPage.clickLogin();
+        return new InventoryPage(webDriver);
     }
 }
 
