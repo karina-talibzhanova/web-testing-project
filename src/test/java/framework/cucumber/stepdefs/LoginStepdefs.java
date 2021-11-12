@@ -18,10 +18,10 @@ public class LoginStepdefs{
     private LoginPage loginPage;
     private CommonPage commonPage;
 
-    @Before
+    @Before(order=0)
     public void setup(){
         Util.setDriverLocation(System.getenv("ChromeDriverPath"));
-        webDriver= new ChromeDriver();
+        webDriver= Util.getNewChromeDriver();
         loginPage= new LoginPage(webDriver); //starts from login page (makes sense because we always need to login)
     }
 
@@ -93,6 +93,12 @@ public class LoginStepdefs{
     @Then("I am given the password error message")
     public void iAmGivenThePasswordErrorMessage() {
         Assertions.assertEquals("Epic sadface: Password is required", loginPage.getErrorMessage());
+    }
+
+
+    @After
+    public void teardown() {
+        webDriver.quit();
     }
 
 }

@@ -14,4 +14,5 @@ public interface CommonPageInterface {
     Cart goToCartPage();
     String getUrl();
 
+
 }

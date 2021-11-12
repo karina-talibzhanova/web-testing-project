@@ -6,6 +6,8 @@ import framework.pom.interfaces.Product;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -110,10 +112,11 @@ public class InventoryPage extends CommonPage implements Inventory {
         return null;
     }
 
-//    @Override
-//    public Cart goToCartPage() {
-//        webDriver.findElement(By.className("shopping_cart_link"));
-//        return new CartPage(webDriver);
-//        return null;
-//    }
+    @Override
+    public Cart goToCartPage() {
+        WebDriverWait wait = new WebDriverWait(webDriver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("shopping_cart_container")));
+        webDriver.findElement(By.id("shopping_cart_container")).click();
+        return new CartPage(webDriver);
+    }
 }

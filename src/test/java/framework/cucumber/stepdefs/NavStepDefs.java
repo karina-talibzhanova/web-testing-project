@@ -2,6 +2,7 @@ package framework.cucumber.stepdefs;
 
 import framework.pom.interfaces.Cart;
 import framework.pom.interfaces.Inventory;
+import framework.pom.pages.InventoryPage;
 import framework.pom.pages.LoginPage;
 import framework.pom.util.Util;
 import io.cucumber.java.After;
@@ -24,22 +25,23 @@ public class NavStepDefs {
     private Cart cartPage;
     private Inventory inventoryPage;
 
-    @Before
+    @Before(order=2)
     public void setup(){
         Util.setDriverLocation(System.getenv("ChromeDriverPath"));
-        webDriver= new ChromeDriver();
-        loginPage= new LoginPage(webDriver);
-        loginPage.inputUsername("standard_user");
-        loginPage.inputPassword("secret_sauce");
-        inventoryPage = loginPage.clickLogin();
-
+        webDriver= Util.getWebDriver();
+        inventoryPage = new InventoryPage(webDriver);
     }
+        
 
-    @After
-    public void teardown(){
-        webDriver.quit();
-    }
 
+
+
+
+//    @After
+//    public void teardown(){
+//        webDriver.quit();
+//    }
+//
 
     @When("I click Reset App State")
     public void iClickResetAppState() {
