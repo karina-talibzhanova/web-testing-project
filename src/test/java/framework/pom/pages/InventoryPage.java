@@ -29,7 +29,9 @@ public class InventoryPage extends CommonPage implements Inventory {
     @Override
     public int cartNumber() {
         String cNum= webDriver.findElement(By.tagName("span")).getText();
-        if (cNum!="0"){ cNum="0";}
+        if (cNum.equals("PRODUCTS")){
+            cNum="0";
+        }
         return Integer.parseInt(cNum);
     }
 

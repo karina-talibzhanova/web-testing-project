@@ -170,6 +170,7 @@ public class BuyProductsStepDefs {
         webDriver.findElement(By.className("inventory_item_img")).click();
         productPage = new ProductPage(webDriver);
     }
+
     @When("I click Remove for an item on the inventory page")
     public void iClickRemoveForAnItemOnTheInventoryPage() {
         WebElement aProduct = webDriver.findElement(By.className("inventory_item"));
@@ -188,4 +189,13 @@ public class BuyProductsStepDefs {
 
     }
 
+    @And("I am on the checkout overview page")
+    public void iAmOnTheCheckoutOverviewPage() {
+        checkoutOverviewPage = checkoutInformationPage.goToCheckoutOverview();
+    }
+
+    @When("I click Cancel")
+    public void iClickCancel() {
+        checkoutInformationPage.goToInventory();
+    }
 }
