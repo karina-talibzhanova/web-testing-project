@@ -37,7 +37,6 @@ public class BuyProductsStepDefs {
         inventoryPage = Util.login("standard_user", "secret_sauce");
     }
 
-
     @Given("I am logged in")
     public void iAmLoggedIn() {
     }
@@ -48,9 +47,11 @@ public class BuyProductsStepDefs {
         inventoryPage.addProduct(aProduct);
     }
 
-    @Then("the cart badge shows the total items in the cart")
-    public void theCartBadgeShowsTheTotalItemsInTheCart() {
-        Assertions.assertEquals("1", inventoryPage.cartNumber());
+
+
+    @Then("the cart badge shows the {int} total items in the cart")
+    public void theCartBadgeShowsTheTotalItemsInTheCart(int number) {
+        Assertions.assertEquals(number, inventoryPage.cartNumber());
     }
 
     @And("I am on a product page")
@@ -155,11 +156,7 @@ public class BuyProductsStepDefs {
 //    public void iClickAllItems() {
 //    }
 //
-//    @And("I am on a product page")
-//    public void iAmOnAProductPage() {
-//    }
-//
-//
+
     @When("I click the {string} of an item")
     public void iClickTheTitleOfAnItem(String title) {
         productPage = inventoryPage.goToProductPageViaTitle(title);
@@ -180,6 +177,11 @@ public class BuyProductsStepDefs {
         WebElement aProduct = webDriver.findElement(By.className("inventory_item"));
         inventoryPage.addProduct(aProduct);
         inventoryPage.removeProduct(aProduct);
+    }
+
+    @When("I click Back to Products")
+    public void iClickBackToProducts() {
+
     }
 
 }

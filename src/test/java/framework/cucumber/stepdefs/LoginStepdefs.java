@@ -95,8 +95,10 @@ public class LoginStepdefs{
         Assertions.assertEquals("Epic sadface: Password is required", loginPage.getErrorMessage());
     }
 
+
     @After
     public void teardown() {
         webDriver.quit();
     }
+
 }

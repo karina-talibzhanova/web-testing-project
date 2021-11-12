@@ -2,9 +2,9 @@ Feature: Ability to buy products
   Background:
     Given I am logged in
 
-  Scenario: As a user, when I add items to the cart, I can see how many items are in the cart badge
-    When I click Add to Cart to for an item on the inventory page
-    Then the cart badge shows the total items in the cart
+#  Scenario: As a user, when I add items to the cart, I can see how many items are in the cart badge
+#    When I click Add to Cart to for an item on the inventory page
+#    Then the cart badge shows the total items in the cart
 
 #  Scenario: As a user, when I add items to thHe cart, I can see how many items are in the cart badge
 #    When I click Add to Cart to for an item on the inventory page
@@ -52,13 +52,21 @@ Feature: Ability to buy products
       | "First,Last, " |
       | " , , "         |
 
-  Scenario: As a user, when I add items to the cart, I can see how many items are in the cart badge
+  Scenario Outline: As a user, when I add items to the cart, I can see how many items are in the cart badge
     When I click Add to Cart to for an item on the inventory page
-    Then the cart badge shows the total items in the cart
+    Then the cart badge shows the <cartbadge> total items in the cart
+    Examples:
+      |cartbadge|
+      |    1   |
 
-  Scenario: As a user, when I remove items from the cart, I can see how many items are in the cart badge
+
+  Scenario Outline: As a user, when I remove items from the cart, I can see how many items are in the cart badge
     When I click Remove for an item on the inventory page
-    Then the cart badge shows the total items in the cart
+    Then the cart badge shows the <cartbadge> total items in the cart
+    Examples:
+      |cartbadge|
+      |    0   |
+
 
   Scenario: As a user, I can click All Items anywhere on the site to go to inventory page
     And I click the sidebar
