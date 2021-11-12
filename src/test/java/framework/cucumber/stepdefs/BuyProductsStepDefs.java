@@ -84,7 +84,6 @@ public class BuyProductsStepDefs {
 
     @And("I see an appropriate error response")
     public void iSeeAnAppropriateErrorResponse() {
-        checkoutInformationPage.isInputBoxesErrored();
         Assertions.assertTrue(checkoutInformationPage.isErrorIconsVisible() && checkoutInformationPage.isInputBoxesErrored());
     }
 

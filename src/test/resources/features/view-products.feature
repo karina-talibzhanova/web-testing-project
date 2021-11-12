@@ -18,9 +18,13 @@ Feature: As a user, I want to view products
     When I click on Price (high to low)
     Then the products are listed in descending order by price
 
-  Scenario: Description exists for all products
+  Scenario: Description exists for all products on inventory page
     When I view the inventory page
     Then all products have a non-empty description
+
+  Scenario: Description exists on product page
+    When I am on a product page
+    Then the product has a non-empty description
 
   Scenario: Correct image exists for all products
     When I view the inventory page

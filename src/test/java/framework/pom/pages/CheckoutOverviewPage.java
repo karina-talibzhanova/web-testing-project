@@ -49,4 +49,19 @@ public class CheckoutOverviewPage extends CommonPage implements CheckoutOverview
         }
         return true;
     }
+
+    @Override
+    public String getProductTitle(WebElement product) {
+        return webDriver.findElement(By.className("inventory_item_name")).getText();
+    }
+
+    @Override
+    public String getProductDescription(WebElement product) {
+        return webDriver.findElement(By.className("inventory_item_desc")).getText();
+    }
+
+    @Override
+    public String getProductPrice(WebElement product) {
+        return null;
+    }
 }

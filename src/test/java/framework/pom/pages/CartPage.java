@@ -31,7 +31,7 @@ public class CartPage extends CommonPage implements Cart {
 
     @Override
     public String getProductDescription(WebElement product) {
-        return null;
+        return webDriver.findElement(By.className("inventory_item_desc")).getText();
     }
 
     @Override
