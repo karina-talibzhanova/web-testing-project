@@ -58,7 +58,9 @@ public class CartPage extends CommonPage implements Cart {
 
     @Override
     public Inventory goToInventory() {
-        return null;
+        webDriver.findElement(By.id("continue-shopping")).click();
+        return new InventoryPage(webDriver);
+
     }
 
 }
