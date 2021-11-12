@@ -22,6 +22,7 @@ Feature: Ability to buy products
     Then the item is removed from the cart
 
   Scenario: As a user, I want to view products in the checkout overview
+    And I have an item in cart
     And I am on the cart page
     When I checkout
     And I add information details

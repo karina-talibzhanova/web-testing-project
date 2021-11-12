@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 public class CheckoutOverviewPage extends CommonPage implements CheckoutOverview {
     public CheckoutOverviewPage(WebDriver webDriver) {
         super(webDriver);
@@ -29,6 +31,23 @@ public class CheckoutOverviewPage extends CommonPage implements CheckoutOverview
     @Override
     public CheckoutComplete goToCheckoutCompletePage() {
         return null;
+    }
+
+    @Override
+    public List<WebElement> getAllProducts() {
+        return webDriver.findElements(By.className("cart_item"));
+    }
+
+    @Override
+    public boolean isProductListCorrect(List<String> productNames) {
+        List<WebElement> checkoutProducts = getAllProducts();
+        for (WebElement product : checkoutProducts) {
+            // comparing the titles of every product in the overview to a given list of titles
+            if (!productNames.contains(product.findElement(By.className("inventory_item_name")).getText())) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
