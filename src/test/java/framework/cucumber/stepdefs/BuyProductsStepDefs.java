@@ -28,10 +28,10 @@ public class BuyProductsStepDefs {
     private CartPage cartPage;
 
 
-    @Before
+    @Before(order=1)
     public void setup(){
         Util.setDriverLocation(System.getenv("ChromeDriverPath"));
-        webDriver= new ChromeDriver();
+        webDriver= Util.getWebDriver();
         Login loginPage= new LoginPage(webDriver); //starts from login page (makes sense because we always need to login)
         loginPage.inputUsername("standard_user");
         loginPage.inputPassword("secret_sauce");
