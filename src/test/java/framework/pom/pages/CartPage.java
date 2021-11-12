@@ -56,4 +56,5 @@ public class CartPage extends CommonPage implements Cart {
     public Inventory goToInventory() {
         return null;
     }
+
 }

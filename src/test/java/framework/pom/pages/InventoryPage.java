@@ -25,6 +25,11 @@ public class InventoryPage extends CommonPage implements Inventory {
     }
 
     @Override
+    public String cartNumber() {
+        return webDriver.findElement(By.tagName("span")).getText();
+    }
+
+    @Override
     public void addProduct(WebElement product) {
         // given an inventory_item, click the button that says "ADD TO CART"
         WebElement button = product.findElement(By.tagName("button"));
