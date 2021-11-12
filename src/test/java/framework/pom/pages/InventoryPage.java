@@ -99,7 +99,7 @@ public class InventoryPage extends CommonPage implements Inventory {
 
     @Override
     public String getProductDescription(WebElement product) {
-        return null;
+        return product.findElement(By.className("inventory_item_desc")).getText();
     }
 
     @Override
