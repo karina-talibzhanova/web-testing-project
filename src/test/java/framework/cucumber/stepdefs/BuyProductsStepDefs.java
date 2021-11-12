@@ -69,10 +69,6 @@ public class BuyProductsStepDefs {
         productPage.goToCartPage();
     }
 
-    @And("I am on the cart page")
-    public void iAmOnTheCartPage() {
-        inventoryPage.goToCartPage();
-    }
 
     @When("I click Continue Shopping")
     public void iClickContinueShopping() {
