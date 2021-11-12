@@ -70,6 +70,12 @@ public class BuyProductsStepDefs {
     }
 
 
+    @When("I click Continue Shopping")
+    public void iClickContinueShopping() {
+        inventoryPage.goToCartPage().goToInventory();
+    }
+
+
     @Then("I do not go to the overview checkout page")
     public void iDoNotGoToTheOverviewCheckoutPage() {
         Assertions.assertEquals("https://www.saucedemo.com/checkout-step-one.html", webDriver.getCurrentUrl());
