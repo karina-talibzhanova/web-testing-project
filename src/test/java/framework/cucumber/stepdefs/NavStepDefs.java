@@ -1,8 +1,6 @@
 package framework.cucumber.stepdefs;
 
 import framework.pom.interfaces.Inventory;
-import framework.pom.pages.CartPage;
-import framework.pom.pages.CommonPage;
 import framework.pom.pages.LoginPage;
 import framework.pom.util.Util;
 import io.cucumber.java.After;

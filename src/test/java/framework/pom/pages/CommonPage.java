@@ -119,7 +119,8 @@ public abstract class CommonPage implements CommonPageInterface {
     }
 
     public Cart goToCartPage() {
-        return null;
+        webDriver.findElement(By.className("shopping_cart_link")).click();
+        return new CartPage(webDriver);
     }
 
     public String getUrl(){
