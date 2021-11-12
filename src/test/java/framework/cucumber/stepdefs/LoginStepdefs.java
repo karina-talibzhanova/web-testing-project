@@ -1,6 +1,7 @@
 package framework.cucumber.stepdefs;
 
 import framework.pom.pages.CommonPage;
+import framework.pom.pages.InventoryPage;
 import framework.pom.pages.LoginPage;
 import framework.pom.util.Util;
 import io.cucumber.java.After;
@@ -16,7 +17,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class LoginStepdefs{
     private WebDriver webDriver;
     private LoginPage loginPage;
-    private CommonPage commonPage;
 
     @Before(order=0)
     public void setup(){
@@ -47,7 +47,7 @@ public class LoginStepdefs{
 
     @Then("I am taken to the inventory page")
     public void iAmTakenToTheInventoryPage() {
-        Assertions.assertEquals("https://www.saucedemo.com/inventory.html", loginPage.getURL());
+        Assertions.assertEquals("https://www.saucedemo.com/inventory.html", webDriver.getCurrentUrl());
     }
 
     @And("I input a invalid password")
@@ -94,7 +94,6 @@ public class LoginStepdefs{
     public void iAmGivenThePasswordErrorMessage() {
         Assertions.assertEquals("Epic sadface: Password is required", loginPage.getErrorMessage());
     }
-
 
     @After
     public void teardown() {
