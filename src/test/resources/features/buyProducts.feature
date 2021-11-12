@@ -39,6 +39,23 @@ Feature: Ability to buy products
     And I add information details
     Then I am taken to the overview checkout page
 
+    Scenario Outline: As a user, if I don't fill in all of the checkout details, I cannot continue to the checkout overview
+      And I am on the cart page
+      When I checkout
+      And I don't add all information <details>
+      Then I do not go to the overview checkout page
+      And I see an appropriate error response
+      Examples:
+      | details |
+      | " ,Last,Zip" |
+      | "First, ,Zip"|
+      | "First,Last, " |
+      | " , , "         |
+
+  Scenario: As a user, when I add items to the cart, I can see how many items are in the cart badge
+    When I click Add to Cart to for an item on the inventory page
+    Then the cart badge shows the total items in the cart
+
   Scenario: As a user, when I remove items from the cart, I can see how many items are in the cart badge
     When I click Remove for an item on the inventory page
     Then the cart badge shows the total items in the cart
