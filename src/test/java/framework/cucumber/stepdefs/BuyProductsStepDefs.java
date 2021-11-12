@@ -114,11 +114,13 @@ public class BuyProductsStepDefs {
         WebElement aProduct = webDriver.findElement(By.className("cart_item"));
         cartPage.removeProducts(aProduct);
     }
-//
-//    @Then("the item is removed from the cart")
-//    public void theItemIsRemovedFromTheCart() {
-//    }
-//
+
+    @Then("the item is removed from the cart")
+    public void theItemIsRemovedFromTheCart() {
+        Integer itemNumber = cartPage.getCartBadgeNumber();
+        Assertions.assertNull(itemNumber);
+    }
+
     @When("I checkout")
     public void iCheckout() {
         checkoutInformationPage = cartPage.goToCheckOut();
