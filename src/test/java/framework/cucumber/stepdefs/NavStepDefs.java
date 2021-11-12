@@ -31,17 +31,7 @@ public class NavStepDefs {
         webDriver= Util.getWebDriver();
         inventoryPage = new InventoryPage(webDriver);
     }
-        
 
-
-
-
-
-//    @After
-//    public void teardown(){
-//        webDriver.quit();
-//    }
-//
 
     @When("I click Reset App State")
     public void iClickResetAppState() {

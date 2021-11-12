@@ -34,11 +34,11 @@ public class BuyProductsStepDefs {
     public void setup(){
         Util.setDriverLocation(System.getenv("ChromeDriverPath"));
         webDriver= Util.getWebDriver();
-        inventoryPage = Util.login("standard_user", "secret_sauce");
     }
 
     @Given("I am logged in")
     public void iAmLoggedIn() {
+        inventoryPage = Util.login("standard_user", "secret_sauce");
     }
 
     @When("I click Add to Cart to for an item on the inventory page")
