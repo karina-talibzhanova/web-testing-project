@@ -1,5 +1,6 @@
 package framework.pom.pages;
 
+import framework.pom.interfaces.Cart;
 import framework.pom.interfaces.Inventory;
 import framework.pom.interfaces.Product;
 import org.openqa.selenium.By;
@@ -21,6 +22,11 @@ public class InventoryPage extends CommonPage implements Inventory {
     @Override
     public boolean isFilterApplied() {
         return false;
+    }
+
+    @Override
+    public String cartNumber() {
+        return webDriver.findElement(By.tagName("span")).getText();
     }
 
     @Override
@@ -101,4 +107,11 @@ public class InventoryPage extends CommonPage implements Inventory {
     public WebElement getProductImage(WebElement product) {
         return null;
     }
+
+//    @Override
+//    public Cart goToCartPage() {
+//        webDriver.findElement(By.className("shopping_cart_link"));
+//        return new CartPage(webDriver);
+//        return null;
+//    }
 }

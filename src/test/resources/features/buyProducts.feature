@@ -2,11 +2,21 @@ Feature: Ability to buy products
   Background:
     Given I am logged in
 
-  Scenario: As a user, I want to be able to add an item to cart
+  Scenario: As a user, when I add items to the cart, I can see how many items are in the cart badge
+    When I click Add to Cart to for an item on the inventory page
+    Then the cart badge shows the total items in the cart
+
+#  Scenario: As a user, when I add items to thHe cart, I can see how many items are in the cart badge
+#    When I click Add to Cart to for an item on the inventory page
+#    Then the item is added to cart
+
+  Scenario: As a user, I want to be able to add an item to cart from the product page
+    And I am on a product page
     When I click Add to Cart for an item on the product page
     Then the item is added to cart
 
   Scenario: As a user, I want to be able to remove an item from cart
+    And I have an item in cart
     And I am on the cart page
     When I click Remove
     Then the item is removed from the cart
@@ -28,10 +38,6 @@ Feature: Ability to buy products
     When I checkout
     And I add information details
     Then I am taken to the overview checkout page
-
-  Scenario: As a user, when I add items to the cart, I can see how many items are in the cart badge
-    When I click Add to Cart to for an item on the inventory page
-    Then the cart badge shows the total items in the cart
 
   Scenario: As a user, when I remove items from the cart, I can see how many items are in the cart badge
     When I click Remove for an item on the inventory page

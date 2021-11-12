@@ -7,6 +7,7 @@ import java.util.List;
 public interface Inventory extends CommonPageInterface{
     void changeFilter(Enum OPTIONS);
     boolean isFilterApplied();
+    String cartNumber();
     void addProduct(WebElement product);
     void removeProduct(WebElement product);
     Product goToProductPageViaTitle(String productName);

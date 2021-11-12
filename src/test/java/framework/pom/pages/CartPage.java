@@ -17,7 +17,10 @@ public class CartPage extends CommonPage implements Cart {
 
     @Override
     public void removeProducts(WebElement product) {
-
+        WebElement button = product.findElement(By.tagName("button"));
+        if (button.getText().equals("REMOVE")) {
+            button.click();
+        }
     }
 
     @Override
@@ -55,4 +58,5 @@ public class CartPage extends CommonPage implements Cart {
     public Inventory goToInventory() {
         return null;
     }
+
 }
