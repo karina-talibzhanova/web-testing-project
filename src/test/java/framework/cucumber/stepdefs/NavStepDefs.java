@@ -1,5 +1,6 @@
 package framework.cucumber.stepdefs;
 
+import framework.pom.interfaces.Cart;
 import framework.pom.interfaces.Inventory;
 import framework.pom.pages.CartPage;
 import framework.pom.pages.CommonPage;
@@ -22,6 +23,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class NavStepDefs {
     private WebDriver webDriver;
     private LoginPage loginPage;
+    private Cart cartPage;
     private Inventory inventoryPage;
 
     @Before
@@ -43,11 +45,15 @@ public class NavStepDefs {
 
     @When("I click Reset App State")
     public void iClickResetAppState() {
+        WebDriverWait wait = new WebDriverWait(webDriver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("inventory_sidebar_link")));
+        inventoryPage.clickResetAppState();
     }
 
     @Then("The app state will reset to default")
     public void theAppStateWillResetToDefault() {
-
+        cartPage = inventoryPage.goToCartPage();
+        Assertions.assertEquals(0, cartPage.getAllProducts().size());
     }
 
     @When("I click the dropdown menu icon")

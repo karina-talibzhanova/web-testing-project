@@ -3,7 +3,8 @@ Feature:
     Given I am logged in
 
   Scenario: As a tester, I want to click on the "Reset state" link so that I can reset the state of the website for testing purposes
-    When I click Reset App State
+    When I click the dropdown menu icon
+    And I click Reset App State
     Then The app state will reset to default
 
   Scenario: As a user, I want to click on the "About" link so that I can navigate to the company's page
