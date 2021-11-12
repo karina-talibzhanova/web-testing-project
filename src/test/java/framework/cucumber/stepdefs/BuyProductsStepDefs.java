@@ -92,12 +92,6 @@ public class BuyProductsStepDefs {
         checkoutInformationPage.goToCheckoutOverview();
     }
 
-//
-//    @Then("the item is added to cart")
-//    public void theItemIsAddedToCart() {
-//
-//    }
-//
     @And("I have an item in cart")
     public void iHaveAnItemInCart() {
         inventoryPage.addProduct(webDriver.findElement(By.className("inventory_item")));
@@ -126,6 +120,8 @@ public class BuyProductsStepDefs {
     @And("I add information details")
     public void iAddInformationDetails() {
         checkoutInformationPage.enterShippingDetails("First", "Last", "Zip");
+        checkoutOverviewPage = checkoutInformationPage.goToCheckoutOverview();
+
     }
 //
 //    @Then("the correct items will be shown in the checkout overview")
@@ -138,7 +134,7 @@ public class BuyProductsStepDefs {
 //
     @Then("I am taken to the overview checkout page")
     public void iAmTakenToTheOverviewCheckoutPage() {
-        checkoutOverviewPage = checkoutInformationPage.goToCheckoutOverview();
+        Assertions.assertEquals("https://www.saucedemo.com/checkout-step-two.html", checkoutOverviewPage.getUrl());
     }
 //
 //    @And("I click the sidebar")
@@ -176,4 +172,9 @@ public class BuyProductsStepDefs {
         inventoryPage.removeProduct(aProduct);
     }
 
+    @Then("the correct items will be shown in the checkout overview")
+    public void theCorrectItemsWillBeShownInTheCheckoutOverview() {
+        List<String> productNames = List.of("Sauce Labs Backpack");
+        Assertions.assertTrue(checkoutOverviewPage.isProductListCorrect(productNames));
+    }
 }
