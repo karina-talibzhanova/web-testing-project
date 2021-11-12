@@ -12,5 +12,6 @@ public interface Product extends CommonPageInterface{
     void removeFromCart();
     Inventory goToInventory();
     boolean isProductImageAltSameAsProductTitle();
+    boolean isProductDescriptionEmpty();
 
 }

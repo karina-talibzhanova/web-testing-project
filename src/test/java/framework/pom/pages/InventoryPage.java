@@ -73,12 +73,12 @@ public class InventoryPage extends CommonPage implements Inventory {
     }
 
     @Override
-    public boolean isProductDefinitionEmpty(WebElement product) {
-        return false;
+    public boolean isProductDefinitionEmpty(String description) {
+        return description.isEmpty();
     }
 
     @Override
-    public boolean isProductTitleEmpty(WebElement product) {
+    public boolean isProductTitleEmpty(String title) {
         return false;
     }
 
@@ -89,7 +89,7 @@ public class InventoryPage extends CommonPage implements Inventory {
 
     @Override
     public List<WebElement> getAllProducts() {
-        return null;
+        return webDriver.findElements(By.className("inventory_item"));
     }
 
     @Override

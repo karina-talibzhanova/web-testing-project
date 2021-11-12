@@ -12,8 +12,8 @@ public interface Inventory extends CommonPageInterface{
     void removeProduct(WebElement product);
     Product goToProductPageViaTitle(String productName);
     Product goToProductPageViaImage(String productName);
-    boolean isProductDefinitionEmpty(WebElement product);
-    boolean isProductTitleEmpty(WebElement product);
+    boolean isProductDefinitionEmpty(String description);
+    boolean isProductTitleEmpty(String title);
     boolean isProductImageAltSameAsProductTitle(WebElement product);
     List<WebElement> getAllProducts();
     String getProductTitle(WebElement product);

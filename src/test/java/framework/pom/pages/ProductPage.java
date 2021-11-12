@@ -52,4 +52,9 @@ public class ProductPage extends CommonPage implements Product {
         //return webDriver.findElement(By.xpath("//img[contains(@alt,"))
         return false;
     }
+
+    @Override
+    public boolean isProductDescriptionEmpty() {
+        return webDriver.findElement(By.className("inventory_details_desc")).getText().isEmpty();
+    }
 }
