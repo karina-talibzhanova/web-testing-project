@@ -22,7 +22,6 @@ public abstract class CommonPage implements CommonPageInterface {
         this.webDriver = webDriver;
     }
 
-
     public void openSideBar() {
         webDriver.findElement(By.id("react-burger-menu-btn")).click();
     }
@@ -121,7 +120,7 @@ public abstract class CommonPage implements CommonPageInterface {
     public Cart goToCartPage() {
         webDriver.findElement(By.className("shopping_cart_link")).click();
         return new CartPage(webDriver);
-    };
+    }
 
     public String getUrl(){
         return webDriver.getCurrentUrl();

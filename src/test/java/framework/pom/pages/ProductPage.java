@@ -33,21 +33,23 @@ public class ProductPage extends CommonPage implements Product {
 
     @Override
     public void addToCart() {
-
+        webDriver.findElement(By.id("add-to-cart-sauce-labs-backpack")).click();
     }
 
     @Override
     public void removeFromCart() {
-
+        webDriver.findElement(By.id("remove-sauce-labs-backpack")).click();
     }
 
     @Override
     public Inventory goToInventory() {
-        return null;
+        webDriver.findElement(By.id("back-to-products")).click();
+        return new InventoryPage(webDriver);
     }
 
     @Override
     public boolean isProductImageAltSameAsProductTitle() {
+        //return webDriver.findElement(By.xpath("//img[contains(@alt,"))
         return false;
     }
 }

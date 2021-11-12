@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CartPage extends CommonPage implements Cart {
@@ -51,11 +52,13 @@ public class CartPage extends CommonPage implements Cart {
 
     @Override
     public List<WebElement> getAllProducts() {
-        return null;
+        List<WebElement> allProducts = webDriver.findElements(By.className("cart_item"));
+        return allProducts;
     }
 
     @Override
     public Inventory goToInventory() {
         return null;
     }
+
 }
